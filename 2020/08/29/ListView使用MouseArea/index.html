@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>我的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="我的博客">
+  <title>ListView使用MouseArea | 我的博客</title>
+  <meta name="keywords" content=" MouseArea , ListView ">
+  <meta name="description" content="ListView使用MouseArea | 我的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="此处省略1千字">
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -379,12 +379,60 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-ListView使用MouseArea" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%9A%E5%AE%A2"><span class="toc-text">什么是博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="toc-text">关于我的博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">ListView使用MouseArea</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="QML">QML</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">MouseArea</a>
+            
+            <a class="color4">ListView</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-08-29 17:32:22'>2020-08-29 22:32</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-text">需求:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88"><span class="toc-text">效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F"><span class="toc-text">结束</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -397,30 +445,218 @@
     }
 </style>
 </div>
-            <h1 id="什么是博客"><a href="#什么是博客" class="headerlink" title="什么是博客"></a>什么是博客</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="需求"><a href="#需求" class="headerlink" title="需求:"></a>需求:</h3><ul>
+<li>ListView使用MouseArea进行项的增减</li>
+</ul>
+<h3 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h3><p><img src="https://github.com/RobinSea/RobinSea.github.io/tree/master/img/%E6%95%88%E6%9E%9C%E5%9B%BE/ListView%E4%BD%BF%E7%94%A8MouseArea.png" alt="ListView使用MouseArea" title="ListView使用MouseArea"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><blockquote>
+<p><strong>备注</strong>：来源网上</p>
 </blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于我的博客"><a href="#关于我的博客" class="headerlink" title="关于我的博客"></a>关于我的博客</h2><p>安联康的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
+<pre><code class="qml">import QtQuick 2.12
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+Rectangle&amp;#123;
+    height: 530
+    width: 1030
+    color: &quot;steelblue&quot;
+    //添加数据
+    Rectangle&amp;#123;
+        x:20
+        y:20
+        height: 50
+        width: 50
+        radius: 5
+        color: mous.pressed ? &quot;red&quot; :&quot;gray&quot;
+        Text &amp;#123;
+            anchors.centerIn: parent
+            font.pixelSize: 30
+            text: qsTr(&quot;+&quot;)
+        &amp;#125;
+        MouseArea&amp;#123;//一些操作获取方式
+            id:mous
+            anchors.fill: parent
+            onClicked: &amp;#123;mylist.incrementCurrentIndex();
+                //mylist.model.append(&amp;#123;&quot;name&quot;:&quot;黄昏&quot;,&quot;score&quot;:88&amp;#125;)//追加了一项数据
+                //mylist.model.insert(2,&amp;#123;&quot;name&quot;:&quot;落日&quot;,&quot;score&quot;:88&amp;#125;)//插入一项数据，index为2
+                //mylist.model.move(0,5,2);//移动，第一个参数表示从index为0开始，移动个数为第三个参数
+                //第二个参数为移动后的index
+                //mylist.model.set(2,&amp;#123;&quot;name&quot;:&quot;落日&quot;,&quot;score&quot;:88&amp;#125;)//重新设置改变index为2的数据值
+                //注意，如果set的index值等于count，则添加一个新的数据，相当append。
+                //mylist.model.setProperty(2,&quot;name&quot;,&quot;夕阳&quot;)//设置index数据，一次只能设置一个。index得小count
+                //mylist.model.sync()// can only be called from a WorkerScript
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;
+    //减少数据
+    Rectangle&amp;#123;
+        id:wer
+        x:960
+        y:20
+        height: 50
+        width: 50
+        radius: 5
+        color: mous1.pressed ? &quot;red&quot; :&quot;gray&quot;
+        Text &amp;#123;
+            anchors.centerIn: parent
+            font.pixelSize: 30
+            text: qsTr(&quot;-&quot;)
+        &amp;#125;
+        MouseArea&amp;#123;//一些操作获取方式
+            id:mous1
+            anchors.fill: parent
+            onClicked: &amp;#123;mylist.decrementCurrentIndex();
+                //mylist.model.clear();//全部清除数据
+                //console.log(mylist.model.get(1).score);//get获取到第几个Index的信息
+                //mylist.model.remove(1);//删除掉参数对应的index数据
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;
+    Component&amp;#123;
+        id:myfooter
+        Rectangle&amp;#123;
+            height: 50
+            width: 400
+            color: &quot;red&quot;
+            Text &amp;#123;
+                anchors.centerIn: parent
+                font.pixelSize: 30
+                text: mylist.count
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;
+    Component&amp;#123;
+        id:myheader
+        Rectangle&amp;#123;
+            height: 50
+            width: 400
+            color: &quot;red&quot;
+            Text &amp;#123;
+                anchors.centerIn: parent
+                font.pixelSize: 15
+                text: &quot;count:&quot; + mylist.count + &quot;  currentSection:&quot; + mylist.currentSection
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;
+    Component&amp;#123;
+        id:myhighlight
+        Rectangle&amp;#123;
+            z:2
+            height: 50
+            width: 400
+            color: &quot;green&quot;
+        &amp;#125;
+    &amp;#125;
+    ListView &amp;#123;
+        id:mylist
+        height: 400
+        width: 400
+        y:50
+        anchors.horizontalCenter: parent.horizontalCenter
+        //count: 5 //只读属性
+        //currentSection: 只读属性
+        //currentIndex: 2//当前项
+        spacing: 10 //子项之间的间隙
+        footer:myfooter //列表的页脚，类型Component
+        header: myheader //列表的标题或者说是头部
+        //highlight: myhighlight  //高亮显示
+        //highlightFollowsCurrentItem: true//当前项改变的时候，高亮显示会跟着移动
+        //highlightMoveDuration: 500
+        //highlightMoveSpeed: 200 //高亮的移动速度
+        //highlightRangeMode: ListView.ApplyRange
+        //ListView.StrictlyEnforceRange
+        //ListView.NoHighlightRange
+        //highlightResizeDuration: 100
+        //highlightResizeSpeed: 500
+        //highlightItem只读属性
+        // preferredHighlightBegin: 2
+        //preferredHighlightEnd: 5
+        keyNavigationWraps: true  //当前项头尾互切（到达最后一项再增加到下一项即可返回第一项）incrementCurrentIndex()
+        //orientation: ListView.Horizontal//列表的方向，水平
+        orientation:ListView.Vertical //默认垂直方向
+        layoutDirection: Qt.LeftToRight //水平布局方向
+        //layoutDirection: Qt.RightToLeft
+        //section.criteria: ViewSection.FullString //
+        //section.criteria: ViewSection.FirstCharacter
+        //section.delegate: myheader
+        //section.property: &quot;hello&quot;
+        //snapMode: ListView.NoSnap //拖动停止设置默认，可见区域任意点可停止
+        //snapMode: ListView.SnapToItem //
+        //snapMode: ListView.SnapOneItem//移动一个Item，对于一次翻转一个界面很有用
+        delegate: mycomponent //委托，进行实例显示
+        model:mymodel //myvisual//数据模型
+        //数据模型有， ListModel ,XmlListModel,VisualItemModel，还有C++提供的数据模型
+
+
+        Component&amp;#123;//Component把元素封装成一个组件，作为列表的委托，实例显示
+            //一个.qml文件也是一个组件，一样可以最委托
+            id:mycomponent
+            Rectangle&amp;#123;
+                height: 60
+                width: 400
+                //color: mylist.isCurrentItem ? &quot;red&quot; : &quot;gray&quot;//是否为当前项，我的没起作用
+                color: mylist.currentIndex ==index ? &quot;red&quot; : &quot;gray&quot;//当前光标是否等于index，个人感觉和isCurrentItem这个属性是一样的作用
+                Text&amp;#123;
+                    anchors.centerIn: parent
+                    font.pixelSize: 25
+                    text:name +&quot;: &quot; +score //从数据模型里面获取的数据
+                &amp;#125;
+
+            &amp;#125;
+        &amp;#125;
+        ListModel&amp;#123;//简单的ListElement容器
+            id:mymodel
+            ListElement&amp;#123;name:&quot;张三&quot;;score:82&amp;#125; //可以添加很多数据内容，委托给delegate显示
+            ListElement&amp;#123;name:&quot;李四&quot;;score:75&amp;#125;
+            ListElement&amp;#123;name:&quot;王五&quot;;score:96&amp;#125;
+            ListElement&amp;#123;name:&quot;黄六&quot;;score:76&amp;#125;
+            ListElement&amp;#123;name:&quot;启华&quot;;score:25&amp;#125;
+            ListElement&amp;#123;name:&quot;京东&quot;;score:68&amp;#125;
+            ListElement&amp;#123;name:&quot;淘宝&quot;;score:35&amp;#125;
+            ListElement&amp;#123;name:&quot;乐视&quot;;score:46&amp;#125;
+            ListElement&amp;#123;name:&quot;三星&quot;;score:78&amp;#125;
+            ListElement&amp;#123;name:&quot;华为&quot;;score:59&amp;#125;
+            ListElement&amp;#123;name:&quot;电信&quot;;score:82&amp;#125;
+            ListElement&amp;#123;name:&quot;移动&quot;;score:52&amp;#125;
+            ListElement&amp;#123;name:&quot;小米&quot;;score:99&amp;#125;
+            ListElement&amp;#123;name:&quot;联通&quot;;score:27&amp;#125;
+            ListElement&amp;#123;name:&quot;魅族&quot;;score:89&amp;#125;
+        &amp;#125;
+        VisualItemModel&amp;#123;//使用VisualItemModel数据模型不需要委托显示
+            //数据模型中是是含有元素的，根据index来显示不同的item
+            id:myvisual
+            Rectangle&amp;#123;height: 100;width: 400;radius: 5;color: &quot;red&quot;&amp;#125;
+            Rectangle&amp;#123;height: 100;width: 400;radius: 5;color: &quot;blue&quot;&amp;#125;
+            Rectangle&amp;#123;height: 100;width: 400;radius: 5;color: &quot;yellow&quot;&amp;#125;
+            Rectangle&amp;#123;height: 100;width: 400;radius: 5;color: &quot;#567890&quot;&amp;#125;
+            Rectangle&amp;#123;height: 100;width: 400;radius: 5;color: &quot;#887766&quot;&amp;#125;
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
+
+</code></pre>
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -429,11 +665,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>
