@@ -23,8 +23,6 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
-
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
 <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -49,7 +47,7 @@
   <input class="theme_preload_comment" value="">
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
-  <input id="theme_highlight_on" value="true" />
+  <input id="theme_highlight_on" value="false" />
   <input id="theme_code_copy" value="true" />
 </div>
 
@@ -220,7 +218,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="45">
-<input type="hidden" id="yelog_site_word_count" value="34.7k">
+<input type="hidden" id="yelog_site_word_count" value="35.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -422,7 +420,7 @@
         
         <a  class="全部文章 QML "
            href="/2020/08/29/ListView%E4%BD%BF%E7%94%A8MouseArea/"
-           data-tag="ListView,MouseArea"
+           data-tag="MouseArea,ListView"
            data-author="" >
             <span class="post-title" title="ListView使用MouseArea">ListView使用MouseArea</span>
             <span class="post-date" title="2020-08-29 22:32:51">2020/08/29</span>
@@ -454,7 +452,7 @@
         
         <a  class="全部文章 QML "
            href="/2020/08/28/GridView%E4%BD%BF%E7%94%A8MouseArea/"
-           data-tag="MouseArea,GridView"
+           data-tag="GridView,MouseArea"
            data-author="" >
             <span class="post-title" title="GridView使用MouseArea">GridView使用MouseArea</span>
             <span class="post-date" title="2020-08-28 21:00:51">2020/08/28</span>
@@ -806,12 +804,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-08-30 09:17:20'>2020-08-29 23:11</time>
+            发布时间 : <time class="date" title='最后更新: 2020-08-30 21:49:44'>2020-08-29 23:11</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:164</span>
+        <span>字数:201</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -864,59 +862,8 @@
 <li>在线预览</li>
 </ul>
 <p><img src="https://github.com/RobinSea/RobinSea.github.io/tree/master/img/%E6%95%88%E6%9E%9C%E5%9B%BE/Gif%E8%B0%83%E7%94%A8.png" alt="Gif调用" title="Gif调用"></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><pre><code class="qml">import QtQuick 2.3
-import QtQuick.Window 2.2
-import QtQuick.Controls 1.2
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> QtQuick <span class="number">2.3</span></span><br><span class="line"><span class="keyword">import</span> QtQuick.Window <span class="number">2.2</span></span><br><span class="line"><span class="keyword">import</span> QtQuick.Controls <span class="number">1.2</span></span><br><span class="line"></span><br><span class="line"><span class="title">Item</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">visible</span>: <span class="literal">true</span>;</span><br><span class="line">    <span class="attribute">width</span>: animated.width;</span><br><span class="line">    <span class="attribute">height</span>: animated.height + <span class="number">40</span>;</span><br><span class="line"></span><br><span class="line">    <span class="title">AnimatedImage</span> &#123;</span><br><span class="line">        <span class="attribute">id:</span><span class="string"> animated</span>;       </span><br><span class="line">        <span class="attribute">source</span>: &#123;</span><br><span class="line">            <span class="string">&quot;https://github.com/RobinSea/RobinSea.github.io/tree/master/img/链接资源/test.gif&quot;</span></span><br><span class="line">            <span class="comment">//&quot;file:///E:/workspace/qmlTest/testGrid/untitled/image/test.gif&quot;</span></span><br><span class="line">            <span class="comment">//path.replace(/\//g, &#x27;&#x27;)  //替换所有/为空</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">onCurrentFrameChanged</span>: &#123;</span><br><span class="line">            info.text = <span class="string">&quot;%1/%2&quot;</span>.arg(animated.currentFrame).arg(animated.frameCount);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title">Row</span>&#123;</span><br><span class="line">        <span class="attribute">spacing</span>: <span class="number">4</span>;</span><br><span class="line">        <span class="attribute">anchors.horizontalCenter</span>: <span class="built_in">parent</span>.horizontalCenter;</span><br><span class="line">        <span class="attribute">anchors.bottom</span>: <span class="built_in">parent</span>.bottom;</span><br><span class="line">        <span class="attribute">anchors.bottomMargin</span>: <span class="number">4</span>;</span><br><span class="line">        <span class="title">Text</span> &#123;</span><br><span class="line">            <span class="attribute">id:</span><span class="string"> info</span>;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">60</span>;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">24</span>;</span><br><span class="line">            <span class="attribute">color</span>: <span class="string">&quot;red&quot;</span>;</span><br><span class="line">            <span class="attribute">verticalAlignment</span>: Text.AlignVCenter;</span><br><span class="line">            <span class="attribute">horizontalAlignment</span>: Text.AlignRight;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="title">Button</span> &#123;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">60</span>;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">24</span>;</span><br><span class="line">            <span class="attribute">text</span>: (animated.paused == <span class="literal">true</span>) ? <span class="string">&quot;Play&quot;</span> : <span class="string">&quot;Pause&quot;</span>;</span><br><span class="line">            <span class="attribute">onClicked</span>: animated.paused = !animated.paused;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="title">Button</span> &#123;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">60</span>;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">24</span>;</span><br><span class="line">            <span class="attribute">text</span>: <span class="string">&quot;Quit&quot;</span>;</span><br><span class="line">            <span class="attribute">onClicked</span>: Qt.quit();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-Item &amp;#123;
-
-    visible: true;
-    width: animated.width;
-    height: animated.height + 40;
-
-    AnimatedImage &amp;#123;
-        id: animated;       
-        source: &amp;#123;
-            &quot;https://github.com/RobinSea/RobinSea.github.io/tree/master/img/链接资源/test.gif&quot;
-            //&quot;file:///E:/workspace/qmlTest/testGrid/untitled/image/test.gif&quot;
-            //path.replace(/\//g, &#39;&#39;)  //替换所有/为空
-        &amp;#125;
-
-        onCurrentFrameChanged: &amp;#123;
-            info.text = &quot;%1/%2&quot;.arg(animated.currentFrame).arg(animated.frameCount);
-        &amp;#125;
-    &amp;#125;
-
-    Row&amp;#123;
-        spacing: 4;
-        anchors.horizontalCenter: parent.horizontalCenter;
-        anchors.bottom: parent.bottom;
-        anchors.bottomMargin: 4;
-        Text &amp;#123;
-            id: info;
-            width: 60;
-            height: 24;
-            color: &quot;red&quot;;
-            verticalAlignment: Text.AlignVCenter;
-            horizontalAlignment: Text.AlignRight;
-        &amp;#125;
-
-        Button &amp;#123;
-            width: 60;
-            height: 24;
-            text: (animated.paused == true) ? &quot;Play&quot; : &quot;Pause&quot;;
-            onClicked: animated.paused = !animated.paused;
-        &amp;#125;
-
-        Button &amp;#123;
-            width: 60;
-            height: 24;
-            text: &quot;Quit&quot;;
-            onClicked: Qt.quit();
-        &amp;#125;
-    &amp;#125;
-&amp;#125;
-</code></pre>
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>
@@ -953,8 +900,6 @@ Item &amp;#123;
 
 
 
-
-    
 
 
 
@@ -1027,25 +972,6 @@ Item &amp;#123;
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
 
         
-        
-        /* 渲染*/
-        function HTMLDecode(text) {
-            var temp = document.createElement("div");
-            temp.innerHTML = text;
-            var output = temp.innerText || temp.textContent;
-            temp = null;
-            return output;
-        }
-        if (window.mermaid){
-            window.mermaid = null
-        }
-        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
-            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
-            if (window.mermaid) {
-                mermaid.initialize(mermaidOptions)
-                mermaid.contentLoaded()
-            }
-        })
         
     }
 
@@ -1139,6 +1065,16 @@ Item &amp;#123;
     /*文章列表背景图*/
     
 
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
     
 </style>
 
