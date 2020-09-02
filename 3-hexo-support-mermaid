@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1032,20 +1032,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="一、说明"><a href="#一、说明" class="headerlink" title="一、说明"></a>一、说明</h2><h3 id="开启"><a href="#开启" class="headerlink" title="开启"></a>开启</h3><ol>
-<li>安装hexo插件<pre><code class="bash">npm install hexo-filter-mermaid-diagrams</code></pre>
-</li>
-<li>修改<code>themes/3-hexo/_config.yml</code> 的 <code>mermaid.on</code>，开启主题支持<pre><code class="yml"># Mermaid 支持
-mermaid:
-on: true
-cdn: //cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js
-#cdn: //cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js
-options: # 更多配置信息可以参考 https://mermaidjs.github.io/#/mermaidAPI
- theme: &#39;default&#39;
- startOnLoad: true
- flowchart:
-   useMaxWidth: false
-   htmlLabels: true</code></pre>
-</li>
+<li>安装hexo插件<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-filter-mermaid-diagrams<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>修改<code>themes/3-hexo/_config.yml</code> 的 <code>mermaid.on</code>，开启主题支持<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token comment"># Mermaid 支持</span>
+<span class="token key atrule">mermaid</span><span class="token punctuation">:</span>
+<span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">cdn</span><span class="token punctuation">:</span> //cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js
+<span class="token comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js</span>
+<span class="token key atrule">options</span><span class="token punctuation">:</span> <span class="token comment"># 更多配置信息可以参考 https://mermaidjs.github.io/#/mermaidAPI</span>
+ <span class="token key atrule">theme</span><span class="token punctuation">:</span> <span class="token string">'default'</span>
+ <span class="token key atrule">startOnLoad</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+ <span class="token key atrule">flowchart</span><span class="token punctuation">:</span>
+   <span class="token key atrule">useMaxWidth</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+   <span class="token key atrule">htmlLabels</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li>在markdown中，像写代码块一样写图表<br><img src="//img.saodiyang.com/FuBTJvG5xIOIcKZPnO9UX5GCwthK.png"></li>
 </ol>
 <h2 id="二、示例"><a href="#二、示例" class="headerlink" title="二、示例"></a>二、示例</h2><p>以下示例源码可以在这边查看 <a target="_blank" rel="noopener" href="https://github.com/yelog/blog/blob/master/source/_posts/tools/3-hexo%E6%94%AF%E6%8C%81mermaid%E5%9B%BE%E8%A1%A8.md">本文源码</a><br>更多示例可以查看官网：<a target="_blank" rel="noopener" href="https://mermaidjs.github.io/">https://mermaidjs.github.io</a></p>
@@ -1233,7 +1231,6 @@ options: # 更多配置信息可以参考 https://mermaidjs.github.io/#/mermaidA
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1244,22 +1241,36 @@ options: # 更多配置信息可以参考 https://mermaidjs.github.io/#/mermaidA
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1267,7 +1278,6 @@ options: # 更多配置信息可以参考 https://mermaidjs.github.io/#/mermaidA
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1335,35 +1345,17 @@ options: # 更多配置信息可以参考 https://mermaidjs.github.io/#/mermaidA
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -980,12 +980,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-09-01 21:49:13'>2020-08-29 21:11</time>
+            发布时间 : <time class="date" title='最后更新: 2020-09-02 20:13:58'>2020-08-29 21:11</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:237</span>
+        <span>字数:215</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1035,92 +1035,93 @@
 <li>选择框下拉菜单自定义</li>
 </ul>
 <h3 id="效果预览："><a href="#效果预览：" class="headerlink" title="效果预览："></a>效果预览：</h3><p><img src="https://github.com/RobinSea/RobinSea.github.io/tree/master/img/%E6%95%88%E6%9E%9C%E5%9B%BE/ComboBox%E4%BD%BF%E7%94%A8.png" alt="ComboBox" title="ComboBox"></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><pre><code class="qml">import QtQuick 2.6
-import QtQuick.Controls 2.1
-Rectangle &amp;#123;
-    width: 600
-    height: 500
-    color: &quot;steelblue&quot;
-    ComboBox &amp;#123;
-        id: control
-        width:300
-        height:50
-        anchors.centerIn: parent
-        model: [&quot;按创建时间排序&quot;, &quot;按文件名称排序&quot;, &quot;按歌手排序&quot;]
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><pre class="line-numbers language-qml" data-language="qml"><code class="language-qml"><span class="token keyword">import</span> QtQuick 2.6
+<span class="token keyword">import</span> QtQuick.Controls 2.1
+<span class="token class-name">Rectangle</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">600</span></span>
+    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">500</span></span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token string">"steelblue"</span></span>
+    <span class="token class-name">ComboBox</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">id</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">control</span>
+        <span class="token property">width</span><span class="token punctuation">:</span><span class="token javascript-expression language-javascript"><span class="token number">300</span></span>
+        <span class="token property">height</span><span class="token punctuation">:</span><span class="token javascript-expression language-javascript"><span class="token number">50</span></span>
+        <span class="token property">anchors.centerIn</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">parent</span>
+        <span class="token property">model</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"按创建时间排序"</span><span class="token punctuation">,</span> <span class="token string">"按文件名称排序"</span><span class="token punctuation">,</span> <span class="token string">"按歌手排序"</span><span class="token punctuation">]</span>
 
-        //显示字体背景
-        background: Rectangle &amp;#123;
-                  implicitWidth: 300
-                  implicitHeight: 50
-                  radius: 2
-                  color: &quot;transparent&quot;
-              &amp;#125;
+        <span class="token comment">//显示字体背景</span>
+        <span class="token property">background</span><span class="token punctuation">:</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">&#123;</span>
+                  <span class="token property">implicitWidth</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">300</span></span>
+                  <span class="token property">implicitHeight</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">50</span></span>
+                  <span class="token property">radius</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">2</span></span>
+                  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token string">"transparent"</span></span>
+              <span class="token punctuation">&#125;</span>
 
-        delegate: ItemDelegate &amp;#123;
-            spacing: 2
-            //高亮色坐标、宽度
-            x:4
-            width:290
-            //下拉框字体
-            Text &amp;#123;
-                id:myText
-                x:30
-                anchors.verticalCenter: parent.verticalCenter
-                text: modelData
-                font.pixelSize: 26
-                color: &quot;white&quot;
-            &amp;#125;
+        <span class="token property">delegate</span><span class="token punctuation">:</span> <span class="token class-name">ItemDelegate</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">spacing</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">2</span></span>
+            <span class="token comment">//高亮色坐标、宽度</span>
+            <span class="token property">x</span><span class="token punctuation">:</span><span class="token javascript-expression language-javascript"><span class="token number">4</span></span>
+            <span class="token property">width</span><span class="token punctuation">:</span><span class="token javascript-expression language-javascript"><span class="token number">290</span></span>
+            <span class="token comment">//下拉框字体</span>
+            <span class="token class-name">Text</span> <span class="token punctuation">&#123;</span>
+                <span class="token property">id</span><span class="token punctuation">:</span><span class="token javascript-expression language-javascript">myText</span>
+                <span class="token property">x</span><span class="token punctuation">:</span><span class="token javascript-expression language-javascript"><span class="token number">30</span></span>
+                <span class="token property">anchors.verticalCenter</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">parent<span class="token punctuation">.</span>verticalCenter</span>
+                <span class="token property">text</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">modelData</span>
+                <span class="token property">font.pixelSize</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">26</span></span>
+                <span class="token property">color</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token string">"white"</span></span>
+            <span class="token punctuation">&#125;</span>
 
-            //highlighted: control.highlightedIndex == index
-        &amp;#125;
+            <span class="token comment">//highlighted: control.highlightedIndex == index</span>
+        <span class="token punctuation">&#125;</span>
 
-        //显示字体
-        contentItem: Text &amp;#123;
-            leftPadding: 0
-            rightPadding: control.indicator.width + control.spacing
+        <span class="token comment">//显示字体</span>
+        <span class="token property">contentItem</span><span class="token punctuation">:</span> <span class="token class-name">Text</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">leftPadding</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">0</span></span>
+            <span class="token property">rightPadding</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">control<span class="token punctuation">.</span>indicator<span class="token punctuation">.</span>width <span class="token operator">+</span> control<span class="token punctuation">.</span>spacing</span>
 
-            text: control.displayText
-            font.pixelSize: 36
-            color: &quot;white&quot;
-        &amp;#125;
+            <span class="token property">text</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">control<span class="token punctuation">.</span>displayText</span>
+            <span class="token property">font.pixelSize</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">36</span></span>
+            <span class="token property">color</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token string">"white"</span></span>
+        <span class="token punctuation">&#125;</span>
 
-        popup: Popup &amp;#123;
-            y: control.height - 1
-            width: 300
-            height:200
-            implicitHeight: listview.contentHeight
-            padding: 20
-            bottomMargin: 60
+        <span class="token property">popup</span><span class="token punctuation">:</span> <span class="token class-name">Popup</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">y</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">control<span class="token punctuation">.</span>height <span class="token operator">-</span> <span class="token number">1</span></span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">300</span></span>
+            <span class="token property">height</span><span class="token punctuation">:</span><span class="token javascript-expression language-javascript"><span class="token number">200</span></span>
+            <span class="token property">implicitHeight</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">listview<span class="token punctuation">.</span>contentHeight</span>
+            <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">20</span></span>
+            <span class="token property">bottomMargin</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">60</span></span>
 
-            contentItem: ListView &amp;#123;
-                id: listview
-                clip: true
-                spacing: 20
-                model: control.popup.visible ? control.delegateModel : null
-                currentIndex: control.highlightedIndex
+            <span class="token property">contentItem</span><span class="token punctuation">:</span> <span class="token class-name">ListView</span> <span class="token punctuation">&#123;</span>
+                <span class="token property">id</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">listview</span>
+                <span class="token property">clip</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token boolean">true</span></span>
+                <span class="token property">spacing</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">20</span></span>
+                <span class="token property">model</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">control<span class="token punctuation">.</span>popup<span class="token punctuation">.</span>visible <span class="token operator">?</span> control<span class="token punctuation">.</span>delegateModel <span class="token operator">:</span> <span class="token keyword">null</span></span>
+                <span class="token property">currentIndex</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">control<span class="token punctuation">.</span>highlightedIndex</span>
 
-//                //选中色
-//                highlight: Rectangle&amp;#123;
-//                    x:5
-//                    width: 300
-//                    height: 50
-//                    color: &quot;gray&quot;
-//                &amp;#125;
+<span class="token comment">//                //选中色</span>
+<span class="token comment">//                highlight: Rectangle&#123;</span>
+<span class="token comment">//                    x:5</span>
+<span class="token comment">//                    width: 300</span>
+<span class="token comment">//                    height: 50</span>
+<span class="token comment">//                    color: "gray"</span>
+<span class="token comment">//                &#125;</span>
 
-                ScrollIndicator.vertical: ScrollIndicator &amp;#123; &amp;#125;
-            &amp;#125;
-            //下拉框背景
-            background: Rectangle &amp;#123;
-                color: &quot;black&quot;
-                opacity: 0.7
-                border.color: &quot;gray&quot;
-                border.width: 2
-                radius:4
-            &amp;#125;
-        &amp;#125;
-    &amp;#125;
-&amp;#125;
-</code></pre>
+                <span class="token property">ScrollIndicator.vertical</span><span class="token punctuation">:</span> <span class="token class-name">ScrollIndicator</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">//下拉框背景</span>
+            <span class="token property">background</span><span class="token punctuation">:</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">&#123;</span>
+                <span class="token property">color</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token string">"black"</span></span>
+                <span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">0.7</span></span>
+                <span class="token property">border.color</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token string">"gray"</span></span>
+                <span class="token property">border.width</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">2</span></span>
+                <span class="token property">radius</span><span class="token punctuation">:</span><span class="token javascript-expression language-javascript"><span class="token number">4</span></span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>
@@ -1205,7 +1206,6 @@ Rectangle &amp;#123;
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1216,22 +1216,36 @@ Rectangle &amp;#123;
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1239,7 +1253,6 @@ Rectangle &amp;#123;
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1307,35 +1320,17 @@ Rectangle &amp;#123;
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

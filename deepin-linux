@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1038,14 +1038,14 @@
 <li><a target="_blank" rel="noopener" href="https://wiki.deepin.org/index.php?title=Deepin%E5%BA%94%E7%94%A8%E7%AE%A1%E7%90%86">Deepin应用列表</a></li>
 </ul>
 <h2 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h2><p>安装输入法，除了商店下载（好多输入法没有被收录进deepin商店），可以使用fcitx安装。<br>如安装google拼音输入法：</p>
-<pre><code class="bash">$ sudo aptitude install fcitx fcitx-googlepinyin</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">aptitude</span> <span class="token function">install</span> fcitx fcitx-googlepinyin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>如果当前在使用ibus，而不是fcitx的话，看下面<br>1）安装fcitx，并安装google拼音</p>
-<pre><code class="bash">$ sudo apt-get install fcitx fcitx-googlepinyin im-config</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> fcitx fcitx-googlepinyin im-config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>2）打开输入法配置</p>
-<pre><code class="bash">$ im-config</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ im-config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>依次：<code>ok</code>-&gt;<code>yes</code>,选择fcitx为默认输入法框架,<code>ok</code>-&gt;<code>ok</code></p>
 <h2 id="制作启动器图标"><a href="#制作启动器图标" class="headerlink" title="制作启动器图标"></a>制作启动器图标</h2><p>以创建 <code>atom</code> 这款编辑器的启动器图标为例。<br>1）进入 <code>/usr/share/applications/</code> 目录，创建 <code>atom.desktop</code> 文件<br>2）编辑 <code>atom.desktop</code> 文件</p>
-<pre><code class="xml">[Desktop Entry]
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">[Desktop Entry]
 Name=Atom
 Comment=A hackable text editor for the 21st century
 Exec=/opt/atom/atom %F
@@ -1053,16 +1053,18 @@ Icon=/opt/atom/atom.png
 Type=Application
 StartupNotify=true
 Categories=TextEditor;Development;Utility;
-MimeType=text/plain;</code></pre>
+MimeType=text/plain;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>解释：<br><code>Name</code>：创建的图标名称<br><code>Comment</code>：备注，随便填<br><code>Exec</code>：启动文件的位置<br><code>Icon</code>：图标位置<br><code>Type</code>：类型，启动程序就填Application<br><code>StartupNotify</code>: 启动通知，填true就行了。详细可查 <a target="_blank" rel="noopener" href="https://developer.gnome.org/integration-guide/stable/startup-notification.html.en">Startup notification</a><br><code>Categories</code>： 分类，随便填，比如：Application;<br><code>MimeType</code>： 打开文件类型</p>
 </blockquote>
 <h2 id="修改apt源"><a href="#修改apt源" class="headerlink" title="修改apt源"></a>修改apt源</h2><p>修改 <code>/etc/apt/sources.list</code><br>默认的源</p>
-<pre><code class="bash">deb [by-hash=force] http://packages.deepin.com/deepin/ unstable main contrib non-free</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">deb <span class="token punctuation">[</span>by-hash<span class="token operator">=</span>force<span class="token punctuation">]</span> http://packages.deepin.com/deepin/ unstable main contrib non-free<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>阿里云的源</p>
-<pre><code class="bash">deb [by-hash=force] http://mirrors.aliyun.com/deepin unstable main contrib non-free</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">deb <span class="token punctuation">[</span>by-hash<span class="token operator">=</span>force<span class="token punctuation">]</span> http://mirrors.aliyun.com/deepin unstable main contrib non-free<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
 <h2 id="更换文件管理器"><a href="#更换文件管理器" class="headerlink" title="更换文件管理器"></a>更换文件管理器</h2><h3 id="Nautilus"><a href="#Nautilus" class="headerlink" title="Nautilus"></a>Nautilus</h3><ol>
-<li>深度商店下载安装 Nautilus<br>2）卸载深度任务管理器<pre><code class="bash">$ sudo apt remove dde-file-manager</code></pre>
+<li>深度商店下载安装 Nautilus<br>2）卸载深度任务管理器<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">apt</span> remove dde-file-manager<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 Nautilus 常用的快捷键</li>
 </ol>
 <table>
@@ -1201,7 +1203,6 @@ Nautilus 常用的快捷键</li>
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1212,22 +1213,36 @@ Nautilus 常用的快捷键</li>
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1235,7 +1250,6 @@ Nautilus 常用的快捷键</li>
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1303,35 +1317,17 @@ Nautilus 常用的快捷键</li>
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

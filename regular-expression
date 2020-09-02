@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -983,7 +983,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:4,657</span>
+        <span>字数:4,599</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1316,60 +1316,60 @@
 </tbody></table>
 <blockquote>
 </blockquote>
-<h2 id="正则表达式常用实例"><a href="#正则表达式常用实例" class="headerlink" title="正则表达式常用实例"></a>正则表达式常用实例</h2><h3 id="账号-密码"><a href="#账号-密码" class="headerlink" title="账号/密码"></a>账号/密码</h3><pre><code class="java">帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线) = &quot;^[a-zA-Z][a-zA-Z0-9_]&amp;#123;4,15&amp;#125;$&quot;
-密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线) = &quot;^[a-zA-Z]\w&amp;#123;5,17&amp;#125;$&quot;
-强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间) = &quot;^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).&amp;#123;8,10&amp;#125;$&quot;</code></pre>
-<h3 id="字符串校验"><a href="#字符串校验" class="headerlink" title="字符串校验"></a>字符串校验</h3><pre><code class="java">汉字 = &quot;^[\u4e00-\u9fa5]&amp;#123;0,&amp;#125;$&quot;;
-英文和数字 = &quot;^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]&amp;#123;4,40&amp;#125;$&quot;;
-长度为3-20的所有字符 = &quot;^.&amp;#123;3,20&amp;#125;$&quot;；
-由26个英文字母组成的字符串 = &quot;^[A-Za-z]+$&quot;；
-由26个大写英文字母组成的字符串 = &quot;^[A-Z]+$&quot;；
-由26个小写英文字母组成的字符串 = &quot;^[a-z]+$&quot;；
-由数字和26个英文字母组成的字符串 = &quot;^[A-Za-z0-9]+$&quot;；
-由数字、26个英文字母或者下划线组成的字符串 = &quot;^\w+$ 或 ^\w&amp;#123;3,20&amp;#125;$&quot;；
-中文、英文、数字包括下划线 = &quot;^[\u4E00-\u9FA5A-Za-z0-9_]+$&quot;；
-中文、英文、数字但不包括下划线等符号 = &quot;^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]&amp;#123;2,20&amp;#125;$&quot;；
-禁止输入含有~的字符 = &quot;[^~\x22]+&quot;；</code></pre>
-<h3 id="手机号"><a href="#手机号" class="headerlink" title="手机号"></a>手机号</h3><pre><code class="java">/**
+<h2 id="正则表达式常用实例"><a href="#正则表达式常用实例" class="headerlink" title="正则表达式常用实例"></a>正则表达式常用实例</h2><h3 id="账号-密码"><a href="#账号-密码" class="headerlink" title="账号/密码"></a>账号/密码</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">帐号是否合法<span class="token punctuation">(</span>字母开头，允许<span class="token number">5</span><span class="token operator">-</span><span class="token number">16</span>字节，允许字母数字下划线<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"^[a-zA-Z][a-zA-Z0-9_]&#123;4,15&#125;$"</span>
+密码<span class="token punctuation">(</span>以字母开头，长度在<span class="token number">6</span><span class="token operator">~</span><span class="token number">18</span>之间，只能包含字母、数字和下划线<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"^[a-zA-Z]\w&#123;5,17&#125;$"</span>
+强密码<span class="token punctuation">(</span>必须包含大小写字母和数字的组合，不能使用特殊字符，长度在<span class="token number">8</span><span class="token operator">-</span><span class="token number">10</span>之间<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).&#123;8,10&#125;$"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="字符串校验"><a href="#字符串校验" class="headerlink" title="字符串校验"></a>字符串校验</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">汉字 <span class="token operator">=</span> <span class="token string">"^[\u4e00-\u9fa5]&#123;0,&#125;$"</span><span class="token punctuation">;</span>
+英文和数字 <span class="token operator">=</span> <span class="token string">"^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]&#123;4,40&#125;$"</span><span class="token punctuation">;</span>
+长度为<span class="token number">3</span><span class="token operator">-</span><span class="token number">20</span>的所有字符 <span class="token operator">=</span> <span class="token string">"^.&#123;3,20&#125;$"</span>；
+由<span class="token number">26</span>个英文字母组成的字符串 <span class="token operator">=</span> <span class="token string">"^[A-Za-z]+$"</span>；
+由<span class="token number">26</span>个大写英文字母组成的字符串 <span class="token operator">=</span> <span class="token string">"^[A-Z]+$"</span>；
+由<span class="token number">26</span>个小写英文字母组成的字符串 <span class="token operator">=</span> <span class="token string">"^[a-z]+$"</span>；
+由数字和<span class="token number">26</span>个英文字母组成的字符串 <span class="token operator">=</span> <span class="token string">"^[A-Za-z0-9]+$"</span>；
+由数字、<span class="token number">26</span>个英文字母或者下划线组成的字符串 <span class="token operator">=</span> <span class="token string">"^\w+$ 或 ^\w&#123;3,20&#125;$"</span>；
+中文、英文、数字包括下划线 <span class="token operator">=</span> <span class="token string">"^[\u4E00-\u9FA5A-Za-z0-9_]+$"</span>；
+中文、英文、数字但不包括下划线等符号 <span class="token operator">=</span> <span class="token string">"^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]&#123;2,20&#125;$"</span>；
+禁止输入含有<span class="token operator">~</span>的字符 <span class="token operator">=</span> <span class="token string">"[^~\x22]+"</span>；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="手机号"><a href="#手机号" class="headerlink" title="手机号"></a>手机号</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * 手机号码
  * 移动：134,135,136,137,138,139,147,150,151,152,157,158,159,170,178,182,183,184,187,188
  * 联通：130,131,132,145,152,155,156,1709,171,176,185,186
  * 电信：133,134,153,1700,177,180,181,189
- */
-String MOBILE = &quot;^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d&amp;#123;8&amp;#125;$&quot;;
-/**
+ */</span>
+<span class="token class-name">String</span> MOBILE <span class="token operator">=</span> <span class="token string">"^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d&#123;8&#125;$"</span><span class="token punctuation">;</span>
+<span class="token comment">/**
  * 中国移动：China Mobile
  * 134,135,136,137,138,139,147,150,151,152,157,158,159,170,178,182,183,184,187,188
- */
-String CM = &quot;^1(3[4-9]|4[7]|5[0-27-9]|7[0]|7[8]|8[2-478])\\d&amp;#123;8&amp;#125;$&quot;;
-/**
+ */</span>
+<span class="token class-name">String</span> CM <span class="token operator">=</span> <span class="token string">"^1(3[4-9]|4[7]|5[0-27-9]|7[0]|7[8]|8[2-478])\\d&#123;8&#125;$"</span><span class="token punctuation">;</span>
+<span class="token comment">/**
  * 中国联通：China Unicom
  * 130,131,132,145,152,155,156,1709,171,176,185,186
- */
-String CU = &quot;^1(3[0-2]|4[5]|5[56]|709|7[1]|7[6]|8[56])\\d&amp;#123;8&amp;#125;$&quot;;
-/**
+ */</span>
+<span class="token class-name">String</span> CU <span class="token operator">=</span> <span class="token string">"^1(3[0-2]|4[5]|5[56]|709|7[1]|7[6]|8[56])\\d&#123;8&#125;$"</span><span class="token punctuation">;</span>
+<span class="token comment">/**
  * 中国电信：China Telecom
  * 133,134,153,1700,177,180,181,189
- */
-String CT = &quot;^1(3[34]|53|77|700|8[019])\\d&amp;#123;8&amp;#125;$&quot;;</code></pre>
-<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><pre><code class="java">String IPREGEXP = &quot;((2[0-4]\d|25[0-5]|[01]?\d\d?)\.)&amp;#123;3&amp;#125;(2[0-4]\d|25[0-5]|[01]?\d\d?)&quot;;</code></pre>
-<h3 id="EMAIL地址"><a href="#EMAIL地址" class="headerlink" title="EMAIL地址"></a>EMAIL地址</h3><pre><code class="java">Email地址 = &quot;^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$&quot;;</code></pre>
-<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><pre><code class="java">域名 = &quot;[a-zA-Z0-9][-a-zA-Z0-9]&amp;#123;0,62&amp;#125;(/.[a-zA-Z0-9][-a-zA-Z0-9]&amp;#123;0,62&amp;#125;)+/.?&quot;;
-InternetURL = &quot;[a-zA-z]+://[^\s]* 或 ^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$&quot;</code></pre>
-<h3 id="身份证"><a href="#身份证" class="headerlink" title="身份证"></a>身份证</h3><pre><code class="java">身份证号(15位、18位数字) = &quot;^\d&amp;#123;15&amp;#125;|\d&amp;#123;18&amp;#125;$&quot;
-短身份证号码(数字、字母x结尾) = &quot;^([0-9])&amp;#123;7,18&amp;#125;(x|X)?$ 或 ^\d&amp;#123;8,18&amp;#125;|[0-9x]&amp;#123;8,18&amp;#125;|[0-9X]&amp;#123;8,18&amp;#125;?$&quot;</code></pre>
-<h3 id="数字类校验"><a href="#数字类校验" class="headerlink" title="数字类校验"></a>数字类校验</h3><pre><code class="java">数字 = &quot;^[0-9]*$&quot;;
-n位的数字 = &quot;^\d&amp;#123;n&amp;#125;$&quot;;
-至少n位的数字 = &quot;^\d&amp;#123;n,&amp;#125;$&quot;;
-m-n位的数字 = &quot;^\d&amp;#123;m,n&amp;#125;$&quot;;
-零和非零开头的数字 = &quot;^(0|[1-9][0-9]*)$&quot;;
-非零开头的最多带两位小数的数字 = &quot;^([1-9][0-9]*)+(.[0-9]&amp;#123;1,2&amp;#125;)?$&quot;;
-带1-2位小数的正数或负数 = &quot;^(\-)?\d+(\.\d&amp;#123;1,2&amp;#125;)?$&quot;;
-正数、负数、和小数 = &quot;^(\-|\+)?\d+(\.\d+)?$&quot;;
-有两位小数的正实数 = &quot;^[0-9]+(.[0-9]&amp;#123;2&amp;#125;)?$&quot;;
-有1~3位小数的正实数 = &quot;^[0-9]+(.[0-9]&amp;#123;1,3&amp;#125;)?$&quot;;
-非零的正整数 = &quot;^[1-9]\d*$ 或 ^([1-9][0-9]*)&amp;#123;1,3&amp;#125;$ 或 ^\+?[1-9][0-9]*$&quot;;
-非零的负整数 = &quot;^\-[1-9][]0-9&quot;*$&quot; 或 &quot;^-[1-9]\d*$&quot;;</code></pre>
+ */</span>
+<span class="token class-name">String</span> CT <span class="token operator">=</span> <span class="token string">"^1(3[34]|53|77|700|8[019])\\d&#123;8&#125;$"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> IPREGEXP <span class="token operator">=</span> <span class="token string">"((2[0-4]\d|25[0-5]|[01]?\d\d?)\.)&#123;3&#125;(2[0-4]\d|25[0-5]|[01]?\d\d?)"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="EMAIL地址"><a href="#EMAIL地址" class="headerlink" title="EMAIL地址"></a>EMAIL地址</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Email</span>地址 <span class="token operator">=</span> <span class="token string">"^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">域名 <span class="token operator">=</span> <span class="token string">"[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;(/.[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;)+/.?"</span><span class="token punctuation">;</span>
+<span class="token class-name">InternetURL</span> <span class="token operator">=</span> <span class="token string">"[a-zA-z]+://[^\s]* 或 ^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="身份证"><a href="#身份证" class="headerlink" title="身份证"></a>身份证</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">身份证号<span class="token punctuation">(</span><span class="token number">15</span>位、<span class="token number">18</span>位数字<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"^\d&#123;15&#125;|\d&#123;18&#125;$"</span>
+短身份证号码<span class="token punctuation">(</span>数字、字母x结尾<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"^([0-9])&#123;7,18&#125;(x|X)?$ 或 ^\d&#123;8,18&#125;|[0-9x]&#123;8,18&#125;|[0-9X]&#123;8,18&#125;?$"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="数字类校验"><a href="#数字类校验" class="headerlink" title="数字类校验"></a>数字类校验</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">数字 <span class="token operator">=</span> <span class="token string">"^[0-9]*$"</span><span class="token punctuation">;</span>
+n位的数字 <span class="token operator">=</span> <span class="token string">"^\d&#123;n&#125;$"</span><span class="token punctuation">;</span>
+至少n位的数字 <span class="token operator">=</span> <span class="token string">"^\d&#123;n,&#125;$"</span><span class="token punctuation">;</span>
+m<span class="token operator">-</span>n位的数字 <span class="token operator">=</span> <span class="token string">"^\d&#123;m,n&#125;$"</span><span class="token punctuation">;</span>
+零和非零开头的数字 <span class="token operator">=</span> <span class="token string">"^(0|[1-9][0-9]*)$"</span><span class="token punctuation">;</span>
+非零开头的最多带两位小数的数字 <span class="token operator">=</span> <span class="token string">"^([1-9][0-9]*)+(.[0-9]&#123;1,2&#125;)?$"</span><span class="token punctuation">;</span>
+带<span class="token number">1</span><span class="token operator">-</span><span class="token number">2</span>位小数的正数或负数 <span class="token operator">=</span> <span class="token string">"^(\-)?\d+(\.\d&#123;1,2&#125;)?$"</span><span class="token punctuation">;</span>
+正数、负数、和小数 <span class="token operator">=</span> <span class="token string">"^(\-|\+)?\d+(\.\d+)?$"</span><span class="token punctuation">;</span>
+有两位小数的正实数 <span class="token operator">=</span> <span class="token string">"^[0-9]+(.[0-9]&#123;2&#125;)?$"</span><span class="token punctuation">;</span>
+有<span class="token number">1</span><span class="token operator">~</span><span class="token number">3</span>位小数的正实数 <span class="token operator">=</span> <span class="token string">"^[0-9]+(.[0-9]&#123;1,3&#125;)?$"</span><span class="token punctuation">;</span>
+非零的正整数 <span class="token operator">=</span> <span class="token string">"^[1-9]\d*$ 或 ^([1-9][0-9]*)&#123;1,3&#125;$ 或 ^\+?[1-9][0-9]*$"</span><span class="token punctuation">;</span>
+非零的负整数 <span class="token operator">=</span> <span class="token string">"^\-[1-9][]0-9"</span><span class="token operator">*</span>$<span class="token string">" 或 "</span><span class="token operator">^</span><span class="token operator">-</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span>\d<span class="token operator">*</span>$"<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>
@@ -1454,7 +1454,6 @@ m-n位的数字 = &quot;^\d&amp;#123;m,n&amp;#125;$&quot;;
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1465,22 +1464,36 @@ m-n位的数字 = &quot;^\d&amp;#123;m,n&amp;#125;$&quot;;
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1488,7 +1501,6 @@ m-n位的数字 = &quot;^\d&amp;#123;m,n&amp;#125;$&quot;;
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1556,35 +1568,17 @@ m-n位的数字 = &quot;^\d&amp;#123;m,n&amp;#125;$&quot;;
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

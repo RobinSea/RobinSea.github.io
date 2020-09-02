@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1032,20 +1032,23 @@
         <p>不久之前在逛blog时，发现了这款tale，今天抽空搭建了一下，将搭建过程写于此。<br>demo website：<a target="_blank" rel="noopener" href="https://tale.biezhi.me/">https://tale.biezhi.me</a></p>
 <h2 id="搭建思路"><a href="#搭建思路" class="headerlink" title="搭建思路"></a>搭建思路</h2><p>看了tale作者的(github)[<a target="_blank" rel="noopener" href="https://github.com/otale]">https://github.com/otale]</a> 发现有建好docker，所以果断使用docker搭建tale的环境</p>
 <h3 id="构建docker镜像"><a href="#构建docker镜像" class="headerlink" title="构建docker镜像"></a>构建docker镜像</h3><p>下载<a target="_blank" rel="noopener" href="https://github.com/otale/tale-docker">tale-docker</a>到本地。</p>
-<pre><code class="bash"># 下载官方Dockerfile
-$ git clone https://github.com/otale/tale-docker.git
-# 构建 tale 镜像
-$ docker build -t tale:1.0 .</code></pre>
-<h3 id="下载tale博客文件"><a href="#下载tale博客文件" class="headerlink" title="下载tale博客文件"></a>下载tale博客文件</h3><pre><code class="bash"># 下载压缩包
-$ sudo wget http://7xls9k.dl1.z0.glb.clouddn.com/tale.zip
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 下载官方Dockerfile</span>
+$ <span class="token function">git</span> clone https://github.com/otale/tale-docker.git
+<span class="token comment"># 构建 tale 镜像</span>
+$ docker build -t tale:1.0 <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-# 讲解压出来的文件夹移入home目录
-$ unzip tale.zip
-$ mv tale /home</code></pre>
-<h3 id="构建tale镜像"><a href="#构建tale镜像" class="headerlink" title="构建tale镜像"></a>构建tale镜像</h3><pre><code class="bash">docker run -d --privileged --hostname tale --name tale \
--v /etc/localtime:/etc/localtime:ro \
--v /home/tale:/var/tale_home -p 80:9000 \
--m 1024m --memory-swap -1 tale:1.0</code></pre>
+<h3 id="下载tale博客文件"><a href="#下载tale博客文件" class="headerlink" title="下载tale博客文件"></a>下载tale博客文件</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 下载压缩包</span>
+$ <span class="token function">sudo</span> <span class="token function">wget</span> http://7xls9k.dl1.z0.glb.clouddn.com/tale.zip
+
+<span class="token comment"># 讲解压出来的文件夹移入home目录</span>
+$ <span class="token function">unzip</span> tale.zip
+$ <span class="token function">mv</span> tale /home<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="构建tale镜像"><a href="#构建tale镜像" class="headerlink" title="构建tale镜像"></a>构建tale镜像</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run -d --privileged --hostname tale --name tale <span class="token punctuation">\</span>
+-v /etc/localtime:/etc/localtime:ro <span class="token punctuation">\</span>
+-v /home/tale:/var/tale_home -p <span class="token number">80</span>:9000 <span class="token punctuation">\</span>
+-m 1024m --memory-swap -1 tale:1.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><p>浏览器进入 <code>127.0.0.1</code> 即可访问<br><img src="http://img.saodiyang.com/FtwT7OgspZR3YjpJhH5VSuUmnLjP.png" alt="管理后台"><br><img src="http://img.saodiyang.com/FnFBhuwvQ4atG2F2ahdj5PSFF3eL.png" alt="首页"><br><img src="http://img.saodiyang.com/Fg1891hUmEATDbFDBgdBsncb4U1U.png" alt="文章"></p>
 <h2 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h2><h3 id="管理后台"><a href="#管理后台" class="headerlink" title="管理后台"></a>管理后台</h3><ol>
 <li>文章支持Markdown和富文本。</li>
@@ -1150,7 +1153,6 @@ $ mv tale /home</code></pre>
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1161,22 +1163,36 @@ $ mv tale /home</code></pre>
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1184,7 +1200,6 @@ $ mv tale /home</code></pre>
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1252,35 +1267,17 @@ $ mv tale /home</code></pre>
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

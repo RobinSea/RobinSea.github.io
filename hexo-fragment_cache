@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -985,7 +985,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:325</span>
+        <span>字数:321</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1035,17 +1035,20 @@
 <p>现在发现了严重的问题，<code>hexo generate</code> 渲染的速度越来越慢，现在132篇左右，每次渲染时间到达了 50+ s，相当不爽。</p>
 <p>今日抽时间，查看了官方api，看到了 <code>fragment_cache</code> 局部缓存这个东西，解决了渲染速度的问题。</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h3><p>局部缓存。它储存局部内容，下次使用时就能直接使用缓存。</p>
-<pre><code class="javascript">&lt;%- fragment_cache(id, fn); %&gt;</code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">fragment_cache</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> fn<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">%</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="替换简单文本区域"><a href="#替换简单文本区域" class="headerlink" title="替换简单文本区域"></a>替换简单文本区域</h3><p>a. 我们可以将所有页面都一样的区域，如下所示，缓存下来。当下一篇文章在渲染到这个位置时，将不再渲染，直接拿缓存数据。</p>
-<pre><code class="js">&lt;%- fragment_cache(&#39;header&#39;, function()&amp;#123;
-    return partial(&#39;&lt;head&gt;&lt;/head&gt;&#39;);
-&amp;#125;) %&gt;</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">fragment_cache</span><span class="token punctuation">(</span><span class="token string">'header'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'&lt;head>&lt;/head>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
 <p>b. 文章模块也可以使用，原来公共引用部分（没有和当前文章耦合的内容）使用下面的方式：</p>
-<pre><code class="js">&lt;%- partial(&#39;_partial/header&#39;); %&gt;</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_partial/header'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">%</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>改进为以下代码：</p>
-<pre><code class="js">&lt;%- fragment_cache(&#39;header&#39;, function()&amp;#123;
-    return partial(&#39;_partial/header&#39;);
-&amp;#125;) %&gt;</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">fragment_cache</span><span class="token punctuation">(</span><span class="token string">'header'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_partial/header'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>这个语法只适用于所有页面都相同，不随文章内容变化的部分。</p>
 <p>作者在 <code>3-hexo</code> 中加入了此语法，渲染132篇文章的速度已从 50+s 到现在 3s 左右了。</p>
 
@@ -1132,7 +1135,6 @@
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1143,22 +1145,36 @@
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1166,7 +1182,6 @@
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1234,35 +1249,17 @@
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -985,7 +985,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:899</span>
+        <span>字数:871</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1035,96 +1035,97 @@
 <h2 id="1、静态编译问题"><a href="#1、静态编译问题" class="headerlink" title="1、静态编译问题"></a>1、静态编译问题</h2><p>（1）常规使用</p>
 <ul>
 <li><p>go1.11.2版本之前</p>
-<pre><code class="bash">go build -ldflags -extldflags=-static</code></pre>
-</li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go build -ldflags -extldflags<span class="token operator">=</span>-static<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>go1.11.2</p>
 <p>可以直接在声明C或C++代码区域添加-static</p>
 </li>
 </ul>
-<pre><code class="go">//#cgo CFLAGS: -D_REENTRANT
-//#cgo LDFLAGS:-static 
-//#cgo pkg-config: libavutil
-import &quot;C&quot;</code></pre>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">//#cgo CFLAGS: -D_REENTRANT</span>
+<span class="token comment">//#cgo LDFLAGS:-static </span>
+<span class="token comment">//#cgo pkg-config: libavutil</span>
+<span class="token keyword">import</span> <span class="token string">"C"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p> （2）go调用ffmpeg</p>
 <p>  正常情况以上办法就可以编译生成静态可执行文件，但是go调用ffmpeg时就不行了，因为要用到glibc只能进行动态链接，解决办法是修改ffmpeg编译后生成的pkgconfig中的相关*.pc文件。</p>
 <p> -Wl,-Bstatic：ffmpeg接口强制静态链接， -Wl,-Bdynamic -lc :glibc强制动态链接 ，将libav-开头的.pc文件改过就好。</p>
-<pre><code class="pc">Conflicts:
-Libs: -L$&amp;#123;libdir&amp;#125; -Wl,-Bstatic -lavutil -lm -Wl,-Bdynamic -lc </code></pre>
+<pre class="line-numbers language-pc" data-language="pc"><code class="language-pc">Conflicts:
+Libs: -L$&#123;libdir&#125; -Wl,-Bstatic -lavutil -lm -Wl,-Bdynamic -lc <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p> 注：本人使用过程中发现要先进行动态编译后再进行以上操作才可，原因未明。</p>
 <h2 id="2、找到合适的ffmpeg包"><a href="#2、找到合适的ffmpeg包" class="headerlink" title="2、找到合适的ffmpeg包"></a>2、找到合适的ffmpeg包</h2><p> 本人在原先<a target="_blank" rel="noopener" href="https://github.com/imkira/go-libav">go-libav</a>包的基础上做了很多改动，不知这个包为什么有那么多star，结果确连example都跑不起来，最后无奈进行了些许改动，例如超时函数的实现，音频数据的处理等。修改后的包看<a target="_blank" rel="noopener" href="https://github.com/RobinSea/glibav">glibav</a>，暂无时间写example，因项目紧任务重，未来得及进行重新架构，本人的项目主要功能是处理各种视频stream生成jpg和wav数据然后发送到kafka，已经上线使用。</p>
 <h2 id="3、项目性能调优"><a href="#3、项目性能调优" class="headerlink" title="3、项目性能调优"></a>3、项目性能调优</h2><p> 在实际应用中发现服务性能与完全用C编写性能差距还是很大的，最后使用多个goroutine勉强达到业务需求。以下列举一些性能调优的常用命令：</p>
-<pre><code class="bash">1、goTool之pprof的使用
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>、goTool之pprof的使用
 //生成cpu profile
-go test -run=^$ -bench=. -cpuprofile=profile.out
+go <span class="token builtin class-name">test</span> -run<span class="token operator">=</span>^$ -bench<span class="token operator">=</span>. -cpuprofile<span class="token operator">=</span>profile.out
 //生成memery profile
-go test -run=^$ -bench=. -memprofile=profile.out
+go <span class="token builtin class-name">test</span> -run<span class="token operator">=</span>^$ -bench<span class="token operator">=</span>. -memprofile<span class="token operator">=</span>profile.out
 //使用原生pprof启动Web UI
-pprof -http=:8080 profile.out
-2、代码优化--goreporter
-goreporter -p [projectRelativePath] -r [reportPath] -e [exceptPackagesName] -f [json / html / text] &amp;#123;-t templatePathIfHtml&amp;#125;</code></pre>
+pprof -http<span class="token operator">=</span>:8080 profile.out
+<span class="token number">2</span>、代码优化--goreporter
+goreporter -p <span class="token punctuation">[</span>projectRelativePath<span class="token punctuation">]</span> -r <span class="token punctuation">[</span>reportPath<span class="token punctuation">]</span> -e <span class="token punctuation">[</span>exceptPackagesName<span class="token punctuation">]</span> -f <span class="token punctuation">[</span>json / html / text<span class="token punctuation">]</span> <span class="token punctuation">&#123;</span>-t templatePathIfHtml<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="问题汇总"><a href="#问题汇总" class="headerlink" title="问题汇总"></a>问题汇总</h2><p>获取输入流帧率</p>
 <p>videoFPS 即输入流的帧率，下面是在原代码例子上改的，可以参考原示例对照，<a target="_blank" rel="noopener" href="https://github.com/imkira/go-libav">https://github.com/imkira/go-libav</a></p>
-<pre><code class="go">func (si *SIConf) openInputVideoStream(ctx *avContext) error &amp;#123;
-    var err error
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>si <span class="token operator">*</span>SIConf<span class="token punctuation">)</span> <span class="token function">openInputVideoStream</span><span class="token punctuation">(</span>ctx <span class="token operator">*</span>avContext<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> err <span class="token builtin">error</span>
 
-    // find first video stream
-    if ctx.decStream = videoStream(ctx.decFmt); ctx.decStream == nil &amp;#123;
-        logger.Error(&quot;Could not find a video stream. Aborting...&quot;)
-        return fmt.Errorf(&quot;Could not find a video stream&quot;)
-    &amp;#125;
+    <span class="token comment">// find first video stream</span>
+    <span class="token keyword">if</span> ctx<span class="token punctuation">.</span>decStream <span class="token operator">=</span> <span class="token function">videoStream</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>decFmt<span class="token punctuation">)</span><span class="token punctuation">;</span> ctx<span class="token punctuation">.</span>decStream <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Could not find a video stream. Aborting..."</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">"Could not find a video stream"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
 
-    codecCtx := ctx.decStream.CodecContext()
-    codecPar := ctx.decStream.CodecParameters()
-    codec := avcodec.FindDecoderByID(codecCtx.CodecID())
+    codecCtx <span class="token operator">:=</span> ctx<span class="token punctuation">.</span>decStream<span class="token punctuation">.</span><span class="token function">CodecContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    codecPar <span class="token operator">:=</span> ctx<span class="token punctuation">.</span>decStream<span class="token punctuation">.</span><span class="token function">CodecParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    codec <span class="token operator">:=</span> avcodec<span class="token punctuation">.</span><span class="token function">FindDecoderByID</span><span class="token punctuation">(</span>codecCtx<span class="token punctuation">.</span><span class="token function">CodecID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    rat := ctx.decFmt.GuessFrameRate(ctx.decStream, nil)
+    rat <span class="token operator">:=</span> ctx<span class="token punctuation">.</span>decFmt<span class="token punctuation">.</span><span class="token function">GuessFrameRate</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>decStream<span class="token punctuation">,</span> <span class="token boolean">nil</span><span class="token punctuation">)</span>
 
-    si.videoFPS = float32(rat.Numerator()) / float32(rat.Denominator())
+    si<span class="token punctuation">.</span>videoFPS <span class="token operator">=</span> <span class="token function">float32</span><span class="token punctuation">(</span>rat<span class="token punctuation">.</span><span class="token function">Numerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">float32</span><span class="token punctuation">(</span>rat<span class="token punctuation">.</span><span class="token function">Denominator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    if codec == nil &amp;#123;
-        logger.Error(&quot;Could not find decoder:&quot;, codecCtx.CodecID())
-    &amp;#125;
-    if ctx.decCodec, err = avcodec.NewContextWithCodec(codec); err != nil &amp;#123;
-        logger.Error(&quot;Failed to create codec context:&quot;, err)
-    &amp;#125;
+    <span class="token keyword">if</span> codec <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Could not find decoder:"</span><span class="token punctuation">,</span> codecCtx<span class="token punctuation">.</span><span class="token function">CodecID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> ctx<span class="token punctuation">.</span>decCodec<span class="token punctuation">,</span> err <span class="token operator">=</span> avcodec<span class="token punctuation">.</span><span class="token function">NewContextWithCodec</span><span class="token punctuation">(</span>codec<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to create codec context:"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
 
-    if err := codecCtx.CopyTo(ctx.decCodec, codecPar); err != nil &amp;#123;
-        logger.Error(&quot;Failed to copy codec context:&quot;, err)
-    &amp;#125;
-    if err := ctx.decCodec.SetInt64Option(&quot;refcounted_frames&quot;, 1); err != nil &amp;#123;
-        logger.Error(&quot;Failed to copy codec context:&quot;, err)
-    &amp;#125;
-    //设置多线程
-    options := avutil.NewDictionary()
-    defer options.Free()
-    if err := options.Set(&quot;threads&quot;, &quot;auto&quot;); err != nil &amp;#123;
-        logger.Error(&quot;Failed to set input options:&quot;, err)
-    &amp;#125;
-    if err := ctx.decCodec.OpenWithCodec(codec, options); err != nil &amp;#123;
-        logger.Error(&quot;Failed to open codec:&quot;, err)
-    &amp;#125;
+    <span class="token keyword">if</span> err <span class="token operator">:=</span> codecCtx<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>decCodec<span class="token punctuation">,</span> codecPar<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to copy codec context:"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> err <span class="token operator">:=</span> ctx<span class="token punctuation">.</span>decCodec<span class="token punctuation">.</span><span class="token function">SetInt64Option</span><span class="token punctuation">(</span><span class="token string">"refcounted_frames"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to copy codec context:"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//设置多线程</span>
+    options <span class="token operator">:=</span> avutil<span class="token punctuation">.</span><span class="token function">NewDictionary</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">defer</span> options<span class="token punctuation">.</span><span class="token function">Free</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">:=</span> options<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"threads"</span><span class="token punctuation">,</span> <span class="token string">"auto"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to set input options:"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> err <span class="token operator">:=</span> ctx<span class="token punctuation">.</span>decCodec<span class="token punctuation">.</span><span class="token function">OpenWithCodec</span><span class="token punctuation">(</span>codec<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to open codec:"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
 
-    //set time base
-    ctx.decCodec.SetTimeBase(ctx.decStream.TimeBase())
+    <span class="token comment">//set time base</span>
+    ctx<span class="token punctuation">.</span>decCodec<span class="token punctuation">.</span><span class="token function">SetTimeBase</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>decStream<span class="token punctuation">.</span><span class="token function">TimeBase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    // we need a v    log.Println(ctx.decCodec.Width(), ctx.decCodec.Height(), ctx.decCodec.PixelFormat(), ctx.decCodec.TimeBase())ideo filter to push the decoded frames to
-    ctx.srcFilter = addFilter(ctx, &quot;buffer&quot;, &quot;in&quot;)
-    if err = ctx.srcFilter.SetImageSizeOption(&quot;video_size&quot;, ctx.decCodec.Width(), ctx.decCodec.Height()); err != nil &amp;#123;
-        logger.Error(&quot;Failed to set filter option:&quot;, err)
-    &amp;#125;
-    if err = ctx.srcFilter.SetPixelFormatOption(&quot;pix_fmt&quot;, ctx.decCodec.PixelFormat()); err != nil &amp;#123;
-        logger.Error(&quot;Failed to set filter option:&quot;, err)
-    &amp;#125;
-    if err = ctx.srcFilter.SetRationalOption(&quot;time_base&quot;, ctx.decStream.TimeBase()); err != nil &amp;#123;
-        logger.Error(&quot;Failed to set filter option:&quot;, err)
-    &amp;#125;
-    //log.Println(ctx.decCodec.Width(), ctx.decCodec.Height(), ctx.decCodec.PixelFormat(), ctx.decStream.TimeBase())
+    <span class="token comment">// we need a v    log.Println(ctx.decCodec.Width(), ctx.decCodec.Height(), ctx.decCodec.PixelFormat(), ctx.decCodec.TimeBase())ideo filter to push the decoded frames to</span>
+    ctx<span class="token punctuation">.</span>srcFilter <span class="token operator">=</span> <span class="token function">addFilter</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> <span class="token string">"buffer"</span><span class="token punctuation">,</span> <span class="token string">"in"</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">=</span> ctx<span class="token punctuation">.</span>srcFilter<span class="token punctuation">.</span><span class="token function">SetImageSizeOption</span><span class="token punctuation">(</span><span class="token string">"video_size"</span><span class="token punctuation">,</span> ctx<span class="token punctuation">.</span>decCodec<span class="token punctuation">.</span><span class="token function">Width</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ctx<span class="token punctuation">.</span>decCodec<span class="token punctuation">.</span><span class="token function">Height</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to set filter option:"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> err <span class="token operator">=</span> ctx<span class="token punctuation">.</span>srcFilter<span class="token punctuation">.</span><span class="token function">SetPixelFormatOption</span><span class="token punctuation">(</span><span class="token string">"pix_fmt"</span><span class="token punctuation">,</span> ctx<span class="token punctuation">.</span>decCodec<span class="token punctuation">.</span><span class="token function">PixelFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to set filter option:"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> err <span class="token operator">=</span> ctx<span class="token punctuation">.</span>srcFilter<span class="token punctuation">.</span><span class="token function">SetRationalOption</span><span class="token punctuation">(</span><span class="token string">"time_base"</span><span class="token punctuation">,</span> ctx<span class="token punctuation">.</span>decStream<span class="token punctuation">.</span><span class="token function">TimeBase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to set filter option:"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//log.Println(ctx.decCodec.Width(), ctx.decCodec.Height(), ctx.decCodec.PixelFormat(), ctx.decStream.TimeBase())</span>
 
-    if err = ctx.srcFilter.Init(); err != nil &amp;#123;
-        logger.Error(&quot;Failed to initialize buffer filter:&quot;, err)
-    &amp;#125;
-    return nil
-&amp;#125;</code></pre>
+    <span class="token keyword">if</span> err <span class="token operator">=</span> ctx<span class="token punctuation">.</span>srcFilter<span class="token punctuation">.</span><span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to initialize buffer filter:"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>
@@ -1209,7 +1210,6 @@ goreporter -p [projectRelativePath] -r [reportPath] -e [exceptPackagesName] -f [
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1220,22 +1220,36 @@ goreporter -p [projectRelativePath] -r [reportPath] -e [exceptPackagesName] -f [
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1243,7 +1257,6 @@ goreporter -p [projectRelativePath] -r [reportPath] -e [exceptPackagesName] -f [
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1311,35 +1324,17 @@ goreporter -p [projectRelativePath] -r [reportPath] -e [exceptPackagesName] -f [
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

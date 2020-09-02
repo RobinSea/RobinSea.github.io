@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -985,7 +985,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:1,348</span>
+        <span>字数:1,308</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1061,10 +1061,11 @@
 <hr>
 <h3 id="2-书写一个质能守恒公式-LaTeX"><a href="#2-书写一个质能守恒公式-LaTeX" class="headerlink" title="2. 书写一个质能守恒公式[^LaTeX]"></a>2. 书写一个质能守恒公式[^LaTeX]</h3><p>$$<br>E=mc^2<br>$$</p>
 <hr>
-<h3 id="3-高亮一段代码-code"><a href="#3-高亮一段代码-code" class="headerlink" title="3. 高亮一段代码[^code]"></a>3. 高亮一段代码[^code]</h3><pre><code class="js">// 给页面里所有的 DOM 元素添加一个 1px 的描边（outline）;
-[].forEach.call($$(&quot;*&quot;),function(a)&amp;#123;
-  a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()*(1&lt;&lt;24))).toString(16);
-&amp;#125;)</code></pre>
+<h3 id="3-高亮一段代码-code"><a href="#3-高亮一段代码-code" class="headerlink" title="3. 高亮一段代码[^code]"></a>3. 高亮一段代码[^code]</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 给页面里所有的 DOM 元素添加一个 1px 的描边（outline）;</span>
+<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token function">$$</span><span class="token punctuation">(</span><span class="token string">"*"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  a<span class="token punctuation">.</span>style<span class="token punctuation">.</span>outline<span class="token operator">=</span><span class="token string">"1px solid #"</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token operator">~</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="4-高效绘制流程图"><a href="#4-高效绘制流程图" class="headerlink" title="4. 高效绘制流程图"></a>4. 高效绘制<a target="_blank" rel="noopener" href="https://github.com/knsv/mermaid#flowchart">流程图</a></h3><pre class="mermaid">graph TD;
   A-->B;
   A-->C;
@@ -1101,21 +1102,21 @@
     发布: 2d
     验收: 3d</pre>
 
-<h3 id="7-支持图表"><a href="#7-支持图表" class="headerlink" title="7. 支持图表"></a>7. 支持图表</h3><pre><code class="echarts">&amp;#123;
+<h3 id="7-支持图表"><a href="#7-支持图表" class="headerlink" title="7. 支持图表"></a>7. 支持图表</h3><pre class="line-numbers language-echarts" data-language="echarts"><code class="language-echarts">&#123;
   &quot;backgroundColor&quot;: &quot;#212121&quot;,
-  &quot;title&quot;: &amp;#123;
+  &quot;title&quot;: &#123;
     &quot;text&quot;: &quot;「晚晴幽草轩」访问来源&quot;,
     &quot;subtext&quot;: &quot;2019 年 6 月份&quot;,
     &quot;x&quot;: &quot;center&quot;,
-    &quot;textStyle&quot;: &amp;#123;
+    &quot;textStyle&quot;: &#123;
       &quot;color&quot;: &quot;#f2f2f2&quot;
-    &amp;#125;
-  &amp;#125;,
-  &quot;tooltip&quot;: &amp;#123;
+    &#125;
+  &#125;,
+  &quot;tooltip&quot;: &#123;
     &quot;trigger&quot;: &quot;item&quot;,
-    &quot;formatter&quot;: &quot;&amp;#123;a&amp;#125; &lt;br/&gt;&amp;#123;b&amp;#125; : &amp;#123;c&amp;#125; (&amp;#123;d&amp;#125;%)&quot;
-  &amp;#125;,
-  &quot;legend&quot;: &amp;#123;
+    &quot;formatter&quot;: &quot;&#123;a&#125; &lt;br&#x2F;&gt;&#123;b&#125; : &#123;c&#125; (&#123;d&#125;%)&quot;
+  &#125;,
+  &quot;legend&quot;: &#123;
     &quot;orient&quot;: &quot;vertical&quot;,
     &quot;left&quot;: &quot;left&quot;,
     &quot;data&quot;: [
@@ -1125,12 +1126,12 @@
       &quot;其他&quot;,
       &quot;社交平台&quot;
     ],
-    &quot;textStyle&quot;: &amp;#123;
+    &quot;textStyle&quot;: &#123;
       &quot;color&quot;: &quot;#f2f2f2&quot;
-    &amp;#125;
-  &amp;#125;,
+    &#125;
+  &#125;,
   &quot;series&quot;: [
-    &amp;#123;
+    &#123;
       &quot;name&quot;: &quot;访问来源&quot;,
       &quot;type&quot;: &quot;pie&quot;,
       &quot;radius&quot;: &quot;55%&quot;,
@@ -1139,40 +1140,41 @@
         &quot;60%&quot;
       ],
       &quot;data&quot;: [
-        &amp;#123;
+        &#123;
           &quot;value&quot;: 10440,
           &quot;name&quot;: &quot;搜索引擎&quot;,
-          &quot;itemStyle&quot;: &amp;#123;
+          &quot;itemStyle&quot;: &#123;
             &quot;color&quot;: &quot;#ef4136&quot;
-          &amp;#125;
-        &amp;#125;,
-        &amp;#123;
+          &#125;
+        &#125;,
+        &#123;
           &quot;value&quot;: 4770,
           &quot;name&quot;: &quot;直接访问&quot;
-        &amp;#125;,
-        &amp;#123;
+        &#125;,
+        &#123;
           &quot;value&quot;: 2430,
           &quot;name&quot;: &quot;推荐&quot;
-        &amp;#125;,
-        &amp;#123;
+        &#125;,
+        &#123;
           &quot;value&quot;: 342,
           &quot;name&quot;: &quot;其他&quot;
-        &amp;#125;,
-        &amp;#123;
+        &#125;,
+        &#123;
           &quot;value&quot;: 18,
           &quot;name&quot;: &quot;社交平台&quot;
-        &amp;#125;
+        &#125;
       ],
-      &quot;itemStyle&quot;: &amp;#123;
-        &quot;emphasis&quot;: &amp;#123;
+      &quot;itemStyle&quot;: &#123;
+        &quot;emphasis&quot;: &#123;
           &quot;shadowBlur&quot;: 10,
           &quot;shadowOffsetX&quot;: 0,
           &quot;shadowColor&quot;: &quot;rgba(0, 0, 0, 0.5)&quot;
-        &amp;#125;
-      &amp;#125;
-    &amp;#125;
+        &#125;
+      &#125;
+    &#125;
   ]
-&amp;#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p><strong>备注</strong>：上述 echarts 图表📈，其数据，须使用严格的 <strong>JSON</strong> 格式；您可使用 JSON.stringify(data)，将对象传换从而得标准数据，即可正常使用。</p>
 </blockquote>
@@ -1287,7 +1289,6 @@
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1298,22 +1299,36 @@
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1321,7 +1336,6 @@
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1389,35 +1403,17 @@
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

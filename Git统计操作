@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -983,7 +983,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:1,412</span>
+        <span>字数:1,360</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1029,44 +1029,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="按commit统计"><a href="#按commit统计" class="headerlink" title="按commit统计"></a>按commit统计</h2><pre><code class="bash"># 统计当前作者今天（从凌晨1点开始）提交次数
-$ git log --author=&quot;$(git config --get user.name)&quot; --no-merges --since=1am --stat
+        <h2 id="按commit统计"><a href="#按commit统计" class="headerlink" title="按commit统计"></a>按commit统计</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 统计当前作者今天（从凌晨1点开始）提交次数</span>
+$ <span class="token function">git</span> log --author<span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> config --get user.name<span class="token variable">)</span></span>"</span> --no-merges --since<span class="token operator">=</span>1am --stat
 
-# 按提交作者统计，按提交次数排序
-$ git shortlog -sn
-$ git shortlog --numbered --summary
+<span class="token comment"># 按提交作者统计，按提交次数排序</span>
+$ <span class="token function">git</span> shortlog -sn
+$ <span class="token function">git</span> shortlog --numbered --summary
 
-# 只看某作者提交的commit数
-$ git log --author=&quot;faker&quot; --oneline --shortstat
+<span class="token comment"># 只看某作者提交的commit数</span>
+$ <span class="token function">git</span> log --author<span class="token operator">=</span><span class="token string">"faker"</span> --oneline --shortstat
 
-# 按提交作者统计，提交数量排名前5（看全部，去掉head管道即可）
-$ git log --pretty=&#39;%aN&#39; | sort | uniq -c | sort -k1 -n -r | head -n 5
+<span class="token comment"># 按提交作者统计，提交数量排名前5（看全部，去掉head管道即可）</span>
+$ <span class="token function">git</span> log --pretty<span class="token operator">=</span><span class="token string">'%aN'</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> -c <span class="token operator">|</span> <span class="token function">sort</span> -k1 -n -r <span class="token operator">|</span> <span class="token function">head</span> -n <span class="token number">5</span>
 
-# 按提交者邮箱统计，提交数量排名前5
-$ git log --pretty=format:%ae | gawk -- &#39;&amp;#123; ++c[$0]; &amp;#125; END &amp;#123; for(cc in c) printf &quot;%5d %s\n&quot;,c[cc],cc; &amp;#125;&#39; | sort -u -n -r | head -n 5
+<span class="token comment"># 按提交者邮箱统计，提交数量排名前5</span>
+$ <span class="token function">git</span> log --pretty<span class="token operator">=</span>format:%ae <span class="token operator">|</span> <span class="token function">gawk</span> -- <span class="token string">'&#123; ++c[<span class="token variable">$0</span>]; &#125; END &#123; for(cc in c) printf "%5d %s<span class="token entity" title="\n">\n</span>",c[cc],cc; &#125;'</span> <span class="token operator">|</span> <span class="token function">sort</span> -u -n -r <span class="token operator">|</span> <span class="token function">head</span> -n <span class="token number">5</span>
 
-# 统计贡献者数量
-$ git log --pretty=&#39;%aN&#39; | sort -u | wc -l
+<span class="token comment"># 统计贡献者数量</span>
+$ <span class="token function">git</span> log --pretty<span class="token operator">=</span><span class="token string">'%aN'</span> <span class="token operator">|</span> <span class="token function">sort</span> -u <span class="token operator">|</span> <span class="token function">wc</span> -l
 
-# 统计提交数量
-$ git log --oneline | wc -l</code></pre>
-<h2 id="按代码行数统计"><a href="#按代码行数统计" class="headerlink" title="按代码行数统计"></a>按代码行数统计</h2><pre><code class="bash"># 统计指定作者增删行数
-$ git log --author=&quot;faker&quot; --pretty=tformat: --numstat | awk &#39;&amp;#123; add += $1; subs += $2; loc += $1 - $2 &amp;#125; END &amp;#123; printf &quot;added lines: %s, removed lines: %s, total lines: %s\n&quot;, add, subs, loc &amp;#125;&#39; -
+<span class="token comment"># 统计提交数量</span>
+$ <span class="token function">git</span> log --oneline <span class="token operator">|</span> <span class="token function">wc</span> -l<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="按代码行数统计"><a href="#按代码行数统计" class="headerlink" title="按代码行数统计"></a>按代码行数统计</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 统计指定作者增删行数</span>
+$ <span class="token function">git</span> log --author<span class="token operator">=</span><span class="token string">"faker"</span> --pretty<span class="token operator">=</span>tformat: --numstat <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123; add += <span class="token variable">$1</span>; subs += <span class="token variable">$2</span>; loc += <span class="token variable">$1</span> - <span class="token variable">$2</span> &#125; END &#123; printf "added lines: %s, removed lines: %s, total lines: %s<span class="token entity" title="\n">\n</span>", add, subs, loc &#125;'</span> -
 
-# 统计当前作者增删行数
-$ git log --author=&quot;$(git config --get user.name)&quot; --pretty=tformat: --numstat | gawk &#39;&amp;#123; add += $1 ; subs += $2 ; loc += $1 - $2 &amp;#125; END &amp;#123; printf &quot;added lines: %s removed lines : %s total lines: %s\n&quot;,add,subs,loc &amp;#125;&#39; -
+<span class="token comment"># 统计当前作者增删行数</span>
+$ <span class="token function">git</span> log --author<span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> config --get user.name<span class="token variable">)</span></span>"</span> --pretty<span class="token operator">=</span>tformat: --numstat <span class="token operator">|</span> <span class="token function">gawk</span> <span class="token string">'&#123; add += <span class="token variable">$1</span> ; subs += <span class="token variable">$2</span> ; loc += <span class="token variable">$1</span> - <span class="token variable">$2</span> &#125; END &#123; printf "added lines: %s removed lines : %s total lines: %s<span class="token entity" title="\n">\n</span>",add,subs,loc &#125;'</span> -
 
-# 统计所有邮箱前缀的增删行数 -英文版
-$ git log --shortstat --pretty=&quot;%cE&quot; | sed &#39;s/\(.*\)@.*/\1/&#39; | grep -v &quot;^$&quot; | awk &#39;BEGIN &amp;#123; line=&quot;&quot;; &amp;#125; !/^ / &amp;#123; if (line==&quot;&quot; || !match(line, $0)) &amp;#123;line = $0 &quot;,&quot; line &amp;#125;&amp;#125; /^ / &amp;#123; print line &quot; # &quot; $0; line=&quot;&quot;&amp;#125;&#39; | sort | sed -E &#39;s/# //;s/ files? changed,//;s/([0-9]+) ([0-9]+ deletion)/\1 0 insertions\(+\), \2/;s/\(\+\)$/\(\+\), 0 deletions\(-\)/;s/insertions?\(\+\), //;s/ deletions?\(-\)//&#39; | awk &#39;BEGIN &amp;#123;name=&quot;&quot;; files=0; insertions=0; deletions=0;&amp;#125; &amp;#123;if ($1 != name &amp;&amp; name != &quot;&quot;) &amp;#123; print name &quot;: &quot; files &quot; files changed, &quot; insertions &quot; insertions(+), &quot; deletions &quot; deletions(-), &quot; insertions-deletions &quot; net&quot;; files=0; insertions=0; deletions=0; name=$1; &amp;#125; name=$1; files+=$2; insertions+=$3; deletions+=$4&amp;#125; END &amp;#123;print name &quot;: &quot; files &quot; files changed, &quot; insertions &quot; insertions(+), &quot; deletions &quot; deletions(-), &quot; insertions-deletions &quot; net&quot;;&amp;#125;&#39;
+<span class="token comment"># 统计所有邮箱前缀的增删行数 -英文版</span>
+$ <span class="token function">git</span> log --shortstat --pretty<span class="token operator">=</span><span class="token string">"%cE"</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/\(.*\)@.*/<span class="token entity" title="\1">\1</span>/'</span> <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token string">"^$"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'BEGIN &#123; line=""; &#125; !/^ / &#123; if (line=="" || !match(line, <span class="token variable">$0</span>)) &#123;line = <span class="token variable">$0</span> "," line &#125;&#125; /^ / &#123; print line " # " <span class="token variable">$0</span>; line=""&#125;'</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">sed</span> -E <span class="token string">'s/# //;s/ files? changed,//;s/([0-9]+) ([0-9]+ deletion)/<span class="token entity" title="\1">\1</span> 0 insertions\(+\), <span class="token entity" title="\2">\2</span>/;s/\(\+\)$/\(\+\), 0 deletions\(-\)/;s/insertions?\(\+\), //;s/ deletions?\(-\)//'</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'BEGIN &#123;name=""; files=0; insertions=0; deletions=0;&#125; &#123;if (<span class="token variable">$1</span> != name &amp;&amp; name != "") &#123; print name ": " files " files changed, " insertions " insertions(+), " deletions " deletions(-), " insertions-deletions " net"; files=0; insertions=0; deletions=0; name=<span class="token variable">$1</span>; &#125; name=<span class="token variable">$1</span>; files+=<span class="token variable">$2</span>; insertions+=<span class="token variable">$3</span>; deletions+=<span class="token variable">$4</span>&#125; END &#123;print name ": " files " files changed, " insertions " insertions(+), " deletions " deletions(-), " insertions-deletions " net";&#125;'</span>
 
-# 统计所有邮箱前缀的增删行数 -中文版
-$ git log --shortstat --pretty=&quot;%cE&quot; | sed &#39;s/\(.*\)@.*/\1/&#39; | grep -v &quot;^$&quot; | awk &#39;BEGIN &amp;#123; line=&quot;&quot;; &amp;#125; !/^ / &amp;#123; if (line==&quot;&quot; || !match(line, $0)) &amp;#123;line = $0 &quot;,&quot; line &amp;#125;&amp;#125; /^ / &amp;#123; print line &quot; # &quot; $0; line=&quot;&quot;&amp;#125;&#39; | sort | sed -E &#39;s/# //;s/ files? changed,//;s/([0-9]+) ([0-9]+ deletion)/\1 0 insertions\(+\), \2/;s/\(\+\)$/\(\+\), 0 deletions\(-\)/;s/insertions?\(\+\), //;s/ deletions?\(-\)//&#39; | awk &#39;BEGIN &amp;#123;name=&quot;&quot;; files=0; insertions=0; deletions=0;&amp;#125; &amp;#123;if ($1 != name &amp;&amp; name != &quot;&quot;) &amp;#123; print name &quot;: &quot; files &quot; 个文件被改变, &quot; insertions &quot; 行被插入(+), &quot; deletions &quot; 行被删除(-), &quot; insertions-deletions &quot; 行剩余&quot;; files=0; insertions=0; deletions=0; name=$1; &amp;#125; name=$1; files+=$2; insertions+=$3; deletions+=$4&amp;#125; END &amp;#123;print name &quot;: &quot; files &quot; 个文件被改变, &quot; insertions &quot; 行被插入(+), &quot; deletions &quot; 行被删除(-), &quot; insertions-deletions &quot; 行剩余&quot;;&amp;#125;&#39;
+<span class="token comment"># 统计所有邮箱前缀的增删行数 -中文版</span>
+$ <span class="token function">git</span> log --shortstat --pretty<span class="token operator">=</span><span class="token string">"%cE"</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/\(.*\)@.*/<span class="token entity" title="\1">\1</span>/'</span> <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token string">"^$"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'BEGIN &#123; line=""; &#125; !/^ / &#123; if (line=="" || !match(line, <span class="token variable">$0</span>)) &#123;line = <span class="token variable">$0</span> "," line &#125;&#125; /^ / &#123; print line " # " <span class="token variable">$0</span>; line=""&#125;'</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">sed</span> -E <span class="token string">'s/# //;s/ files? changed,//;s/([0-9]+) ([0-9]+ deletion)/<span class="token entity" title="\1">\1</span> 0 insertions\(+\), <span class="token entity" title="\2">\2</span>/;s/\(\+\)$/\(\+\), 0 deletions\(-\)/;s/insertions?\(\+\), //;s/ deletions?\(-\)//'</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'BEGIN &#123;name=""; files=0; insertions=0; deletions=0;&#125; &#123;if (<span class="token variable">$1</span> != name &amp;&amp; name != "") &#123; print name ": " files " 个文件被改变, " insertions " 行被插入(+), " deletions " 行被删除(-), " insertions-deletions " 行剩余"; files=0; insertions=0; deletions=0; name=<span class="token variable">$1</span>; &#125; name=<span class="token variable">$1</span>; files+=<span class="token variable">$2</span>; insertions+=<span class="token variable">$3</span>; deletions+=<span class="token variable">$4</span>&#125; END &#123;print name ": " files " 个文件被改变, " insertions " 行被插入(+), " deletions " 行被删除(-), " insertions-deletions " 行剩余";&#125;'</span>
 
-# 统计所有作者增删行数 --英文版
-$ git log --format=&#39;%aN&#39; | sort -u | while read name; do echo -en &quot;$name\t&quot;; git log --author=&quot;$name&quot; --pretty=tformat: --numstat | awk &#39;&amp;#123; add += $1; subs += $2; loc += $1 - $2 &amp;#125; END &amp;#123; printf &quot;added lines: %s, removed lines: %s, total lines: %s\n&quot;, add, subs, loc &amp;#125;&#39; -; done
+<span class="token comment"># 统计所有作者增删行数 --英文版</span>
+$ <span class="token function">git</span> log --format<span class="token operator">=</span><span class="token string">'%aN'</span> <span class="token operator">|</span> <span class="token function">sort</span> -u <span class="token operator">|</span> <span class="token keyword">while</span> <span class="token builtin class-name">read</span> name<span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token builtin class-name">echo</span> -en <span class="token string">"<span class="token variable">$name</span><span class="token entity" title="\t">\t</span>"</span><span class="token punctuation">;</span> <span class="token function">git</span> log --author<span class="token operator">=</span><span class="token string">"<span class="token variable">$name</span>"</span> --pretty<span class="token operator">=</span>tformat: --numstat <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123; add += <span class="token variable">$1</span>; subs += <span class="token variable">$2</span>; loc += <span class="token variable">$1</span> - <span class="token variable">$2</span> &#125; END &#123; printf "added lines: %s, removed lines: %s, total lines: %s<span class="token entity" title="\n">\n</span>", add, subs, loc &#125;'</span> -<span class="token punctuation">;</span> <span class="token keyword">done</span>
 
-# 统计所有作者增删行数 --中文版
-$ git log --format=&#39;%aN&#39; | sort -u | while read name; do echo -en &quot;$name\t&quot;; git log --author=&quot;$name&quot; --pretty=tformat: --numstat | awk &#39;&amp;#123; add += $1; subs += $2; loc += $1 - $2 &amp;#125; END &amp;#123; printf &quot;添加行数: %s, 删除行数: %s, 总行数: %s\n&quot;, add, subs, loc &amp;#125;&#39; -; done</code></pre>
+<span class="token comment"># 统计所有作者增删行数 --中文版</span>
+$ <span class="token function">git</span> log --format<span class="token operator">=</span><span class="token string">'%aN'</span> <span class="token operator">|</span> <span class="token function">sort</span> -u <span class="token operator">|</span> <span class="token keyword">while</span> <span class="token builtin class-name">read</span> name<span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token builtin class-name">echo</span> -en <span class="token string">"<span class="token variable">$name</span><span class="token entity" title="\t">\t</span>"</span><span class="token punctuation">;</span> <span class="token function">git</span> log --author<span class="token operator">=</span><span class="token string">"<span class="token variable">$name</span>"</span> --pretty<span class="token operator">=</span>tformat: --numstat <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123; add += <span class="token variable">$1</span>; subs += <span class="token variable">$2</span>; loc += <span class="token variable">$1</span> - <span class="token variable">$2</span> &#125; END &#123; printf "添加行数: %s, 删除行数: %s, 总行数: %s<span class="token entity" title="\n">\n</span>", add, subs, loc &#125;'</span> -<span class="token punctuation">;</span> <span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="git-log-说明"><a href="#git-log-说明" class="headerlink" title="git log 说明"></a>git log 说明</h2><blockquote>
 <p>git log 参数说明：<br><code>--</code>author   指定作者<br><code>--</code>stat   显示每次更新的文件修改统计信息，会列出具体文件列表<br><code>--</code>shortstat    统计每个commit 的文件修改行数，包括增加，删除，但不列出文件列表：<br><code>--</code>numstat   统计每个commit 的文件修改行数，包括增加，删除，并列出文件列表：</p>
 </blockquote>
@@ -1160,7 +1161,6 @@ $ git log --format=&#39;%aN&#39; | sort -u | while read name; do echo -en &quot;
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1171,22 +1171,36 @@ $ git log --format=&#39;%aN&#39; | sort -u | while read name; do echo -en &quot;
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1194,7 +1208,6 @@ $ git log --format=&#39;%aN&#39; | sort -u | while read name; do echo -en &quot;
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1262,35 +1275,17 @@ $ git log --format=&#39;%aN&#39; | sort -u | while read name; do echo -en &quot;
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

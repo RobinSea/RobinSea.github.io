@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1036,33 +1036,33 @@
         <p>Hexo是一个快速，简单，功能强大的开源博客框架-》<a target="_blank" rel="noopener" href="https://hexo.io/">官网</a><br>GitHub Pages 是一个不受限的网站空间。<br>两者相得益彰。给那些喜欢自己折腾的人提供一些借鉴。</p>
 <a id="more"></a>
 <h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h3><p>博主使用系统：Deepin Linux 15.3桌面版<br>安装 node与npm</p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><pre><code class="bash">npm install hexo-cli -g</code></pre>
-<h3 id="初始化blog"><a href="#初始化blog" class="headerlink" title="初始化blog"></a>初始化blog</h3><pre><code class="bash">hexo init blog</code></pre>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-cli -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="初始化blog"><a href="#初始化blog" class="headerlink" title="初始化blog"></a>初始化blog</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo init blog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>至此，本地blog已经创建完成，是不是很简单，简单到没朋友</p>
 <h3 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h3><p>可以在<a target="_blank" rel="noopener" href="https://hexo.io/themes/">hexo官网</a>查看自己喜欢的主题<br>通过git clone [url] themes/xxx 将主题克隆到本地，<br>修改 <code>_config.yml</code> 中的theme：xxx</p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><pre><code class="bash">#创建一个新的文章
-$ hexo new &quot;文章名&quot;
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#创建一个新的文章</span>
+$ hexo new <span class="token string">"文章名"</span>
 
-#生成静态文件
+<span class="token comment">#生成静态文件</span>
 $ hexo generate
 
-#将一个草稿发布出去
-$ hexo publish [layout] &lt;filename&gt;
+<span class="token comment">#将一个草稿发布出去</span>
+$ hexo publish <span class="token punctuation">[</span>layout<span class="token punctuation">]</span> <span class="token operator">&lt;</span>filename<span class="token operator">></span>
 
-#启动一个本地服务器
-$ hexo server</code></pre>
+<span class="token comment">#启动一个本地服务器</span>
+$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>更多命令移步<a target="_blank" rel="noopener" href="https://hexo.io/docs/commands.html">官方文档</a></p>
 <h3 id="搭建github-pages"><a href="#搭建github-pages" class="headerlink" title="搭建github pages"></a>搭建github pages</h3><p>本地blog已经搭建完成，现在可以发布到github pages上</p>
 <h4 id="注册github账户"><a href="#注册github账户" class="headerlink" title="注册github账户"></a>注册github账户</h4><p>到<a target="_blank" rel="noopener" href="https://github.com/">github官网</a>注册一个github账户</p>
 <h4 id="配置登录免密码"><a href="#配置登录免密码" class="headerlink" title="配置登录免密码"></a>配置登录免密码</h4><p>移步 <a href="#">Post not found: Git-SSH-HTTPS-verify-configuration</a></p>
 <h4 id="创建github远程仓库"><a href="#创建github远程仓库" class="headerlink" title="创建github远程仓库"></a>创建github远程仓库</h4><p>在github上创建一个仓库 <code>xxx.github.io</code> xxx为自己的github用户名</p>
-<h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><pre><code class="bash">$ npm install hexo-deployer-git --save</code></pre>
+<h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h4><p>修改 <code>_comfig.yml</code>,xxx为你的用户名</p>
-<pre><code class="xml">deploy:
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">deploy:
    type: git
    repo: git@github.com:xxx/xxx.github.io.git
-   branch: master</code></pre>
-<h4 id="推送服务器"><a href="#推送服务器" class="headerlink" title="推送服务器"></a>推送服务器</h4><pre><code class="bash">$ hexo deploy</code></pre>
+   branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="推送服务器"><a href="#推送服务器" class="headerlink" title="推送服务器"></a>推送服务器</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>若出现<code>ERROR Deployer not found: git</code>报错，请执行上面安装插件步骤</p>
 </blockquote>
@@ -1151,7 +1151,6 @@ $ hexo server</code></pre>
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1162,22 +1161,36 @@ $ hexo server</code></pre>
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1185,7 +1198,6 @@ $ hexo server</code></pre>
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1253,35 +1265,17 @@ $ hexo server</code></pre>
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

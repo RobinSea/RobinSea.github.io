@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -985,7 +985,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:688</span>
+        <span>字数:670</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1035,74 +1035,22 @@
 <p>设置好想要显示的样式后，复制 html 代码</p>
 <p><img src="https://i.loli.net/2019/10/08/rbHRZEoB4mzip75.png"></p>
 <p>最好外层在加一个 <code>div</code>，如下，可直接将上一步复制的 <code>iframe</code> 替换下方里面的 <code>iframe</code></p>
-<pre><code class="html">&lt;div id=&quot;musicMouseDrag&quot; style=&quot;position:fixed; z-index: 9999; bottom: 0; right: 0;&quot;&gt;
-    &lt;div id=&quot;musicDragArea&quot; style=&quot;position: absolute; top: 0; left: 0; width: 100%;height: 10px;cursor: move; z-index: 10;&quot;&gt;&lt;/div&gt;
-    &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=38592976&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;</code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>musicMouseDrag<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span>fixed<span class="token punctuation">;</span> <span class="token property">z-index</span><span class="token punctuation">:</span> 9999<span class="token punctuation">;</span> <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>musicDragArea<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span> <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span><span class="token property">height</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span><span class="token property">cursor</span><span class="token punctuation">:</span> move<span class="token punctuation">;</span> <span class="token property">z-index</span><span class="token punctuation">:</span> 10<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">frameborder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no<span class="token punctuation">"</span></span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">marginwidth</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">marginheight</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>330</span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>86</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>//music.163.com/outchain/player?type=2&amp;id=38592976&amp;auto=1&amp;height=66<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="2-将插件引入到主题中"><a href="#2-将插件引入到主题中" class="headerlink" title="2. 将插件引入到主题中"></a>2. 将插件引入到主题中</h3><p>将上一步加过 <code>div</code> 的代码粘贴到主题下 <code>layout/_partial/footer.ejs</code> 的最后面<br><img src="https://i.loli.net/2019/10/08/FRJOKxLECcvinmf.png" alt="效果"></p>
 <h3 id="3-调整位置"><a href="#3-调整位置" class="headerlink" title="3. 调整位置"></a>3. 调整位置</h3><p>默认给的样式是显示在右下角，可以通过调整上一步粘贴的 <code>div</code> 的 <code>style</code> 中 <code>bottom</code> 和 <code>right</code> 来调整位置。</p>
 <h3 id="4-自由拖动"><a href="#4-自由拖动" class="headerlink" title="4. 自由拖动"></a>4. 自由拖动</h3><p>如果需要自由拖动，在刚才添加的代码后面，再添加下面代码即可，鼠标就可以在音乐控件的 <strong>上边沿</strong> 点击拖动</p>
-<pre><code class="html">&lt;!--以下代码是为了支持随时拖动音乐控件的位置，如没有需求，可去掉下面代码--&gt;
-&lt;script&gt;
-    var $DOC = $(document)
-    $(&#39;#musicMouseDrag&#39;).on(&#39;mousedown&#39;, function (e) &amp;#123;
-      // 阻止文本选中
-      $DOC.bind(&quot;selectstart&quot;, function () &amp;#123;
-        return false;
-      &amp;#125;);
-      $(&#39;#musicDragArea&#39;).css(&#39;height&#39;, &#39;100%&#39;);
-      var $moveTarget = $(&#39;#musicMouseDrag&#39;);
-      $moveTarget.css(&#39;border&#39;, &#39;1px dashed grey&#39;)
-      var div_x = e.pageX - $moveTarget.offset().left;
-      var div_y = e.pageY - $moveTarget.offset().top;
-      $DOC.on(&#39;mousemove&#39;, function (e) &amp;#123;
-        var targetX = e.pageX - div_x;
-        var targetY = e.pageY - div_y;
-        targetX = targetX &lt; 0 ? 0 : (targetX + $moveTarget.outerWidth() &gt;= window.innerWidth) ? window.innerWidth - $moveTarget.outerWidth() : targetX;
-        targetY = targetY &lt; 0 ? 0 : (targetY + $moveTarget.outerHeight() &gt;= window.innerHeight) ? window.innerHeight - $moveTarget.outerHeight() : targetY;
-        $moveTarget.css(&amp;#123;&#39;left&#39;: targetX + &#39;px&#39;, &#39;top&#39;: targetY + &#39;px&#39;, &#39;bottom&#39;: &#39;inherit&#39;, &#39;right&#39;: &#39;inherit&#39;&amp;#125;)
-      &amp;#125;).on(&#39;mouseup&#39;, function () &amp;#123;
-        $DOC.unbind(&quot;selectstart&quot;);
-        $DOC.off(&#39;mousemove&#39;)
-        $DOC.off(&#39;mouseup&#39;)
-        $moveTarget.css(&#39;border&#39;, &#39;none&#39;)
-        $(&#39;#musicDragArea&#39;).css(&#39;height&#39;, &#39;10px&#39;);
-      &amp;#125;)
-    &amp;#125;)
-&lt;/script&gt;</code></pre>
-<h3 id="5-完整引用"><a href="#5-完整引用" class="headerlink" title="5. 完整引用"></a>5. 完整引用</h3><pre><code class="html">/*&lt;div id=&quot;musicMouseDrag&quot; style=&quot;position:fixed; z-index: 9999; bottom: 0; right: 0;&quot;&gt;
-    &lt;div id=&quot;musicDragArea&quot; style=&quot;position: absolute; top: 0; left: 0; width: 100%;height: 10px;cursor: move; z-index: 10;&quot;&gt;&lt;/div&gt;
-    &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;//music.163.com/outchain/player?type=2&amp;id=368727&amp;auto=0&amp;height=32&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!--以下代码是为了支持随时拖动音乐控件的位置，如没有需求，可去掉下面代码--></span>
+<p><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><br>    <span class="token keyword">var</span> $<span class="token constant">DOC</span> <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><br>    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">‘#musicMouseDrag’</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">‘mousedown’</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><br>      <span class="token comment">// 阻止文本选中</span><br>      $<span class="token constant">DOC</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token string">“selectstart”</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><br>        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">‘#musicDragArea’</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">‘height’</span><span class="token punctuation">,</span> <span class="token string">‘100%’</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">var</span> $moveTarget <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">‘#musicMouseDrag’</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      $moveTarget<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">‘border’</span><span class="token punctuation">,</span> <span class="token string">‘1px dashed grey’</span><span class="token punctuation">)</span><br>      <span class="token keyword">var</span> div_x <span class="token operator">=</span> e<span class="token punctuation">.</span>pageX <span class="token operator">-</span> $moveTarget<span class="token punctuation">.</span><span class="token function">offset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>left<span class="token punctuation">;</span><br>      <span class="token keyword">var</span> div_y <span class="token operator">=</span> e<span class="token punctuation">.</span>pageY <span class="token operator">-</span> $moveTarget<span class="token punctuation">.</span><span class="token function">offset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>top<span class="token punctuation">;</span><br>      $<span class="token constant">DOC</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">‘mousemove’</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><br>        <span class="token keyword">var</span> targetX <span class="token operator">=</span> e<span class="token punctuation">.</span>pageX <span class="token operator">-</span> div_x<span class="token punctuation">;</span><br>        <span class="token keyword">var</span> targetY <span class="token operator">=</span> e<span class="token punctuation">.</span>pageY <span class="token operator">-</span> div_y<span class="token punctuation">;</span><br>        targetX <span class="token operator">=</span> targetX <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> <span class="token punctuation">(</span>targetX <span class="token operator">+</span> $moveTarget<span class="token punctuation">.</span><span class="token function">outerWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> window<span class="token punctuation">.</span>innerWidth<span class="token punctuation">)</span> <span class="token operator">?</span> window<span class="token punctuation">.</span>innerWidth <span class="token operator">-</span> $moveTarget<span class="token punctuation">.</span><span class="token function">outerWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> targetX<span class="token punctuation">;</span><br>        targetY <span class="token operator">=</span> targetY <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> <span class="token punctuation">(</span>targetY <span class="token operator">+</span> $moveTarget<span class="token punctuation">.</span><span class="token function">outerHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> window<span class="token punctuation">.</span>innerHeight<span class="token punctuation">)</span> <span class="token operator">?</span> window<span class="token punctuation">.</span>innerHeight <span class="token operator">-</span> $moveTarget<span class="token punctuation">.</span><span class="token function">outerHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> targetY<span class="token punctuation">;</span><br>        $moveTarget<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">‘left’</span><span class="token operator">:</span> targetX <span class="token operator">+</span> <span class="token string">‘px’</span><span class="token punctuation">,</span> <span class="token string">‘top’</span><span class="token operator">:</span> targetY <span class="token operator">+</span> <span class="token string">‘px’</span><span class="token punctuation">,</span> <span class="token string">‘bottom’</span><span class="token operator">:</span> <span class="token string">‘inherit’</span><span class="token punctuation">,</span> <span class="token string">‘right’</span><span class="token operator">:</span> <span class="token string">‘inherit’</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><br>      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">‘mouseup’</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><br>        $<span class="token constant">DOC</span><span class="token punctuation">.</span><span class="token function">unbind</span><span class="token punctuation">(</span><span class="token string">“selectstart”</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        $<span class="token constant">DOC</span><span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token string">‘mousemove’</span><span class="token punctuation">)</span><br>        $<span class="token constant">DOC</span><span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token string">‘mouseup’</span><span class="token punctuation">)</span><br>        $moveTarget<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">‘border’</span><span class="token punctuation">,</span> <span class="token string">‘none’</span><span class="token punctuation">)</span><br>        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">‘#musicDragArea’</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">‘height’</span><span class="token punctuation">,</span> <span class="token string">‘10px’</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><br>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>:hexoPostRenderEscape–&gt;</p>
+<h3 id="5-完整引用"><a href="#5-完整引用" class="headerlink" title="5. 完整引用"></a>5. 完整引用</h3><pre class="line-numbers language-html" data-language="html"><code class="language-html">/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>musicMouseDrag<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span>fixed<span class="token punctuation">;</span> <span class="token property">z-index</span><span class="token punctuation">:</span> 9999<span class="token punctuation">;</span> <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>musicDragArea<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span> <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span><span class="token property">height</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span><span class="token property">cursor</span><span class="token punctuation">:</span> move<span class="token punctuation">;</span> <span class="token property">z-index</span><span class="token punctuation">:</span> 10<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">frameborder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no<span class="token punctuation">"</span></span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">marginwidth</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">marginheight</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>298</span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>52</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>//music.163.com/outchain/player?type=2&amp;id=368727&amp;auto=0&amp;height=32<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 
-&lt;!-- 以下代码是为了支持随时拖动音乐控件的位置，如没有需求，可去掉下面代码 --&gt;
-&lt;script&gt;
-    var $DOC = $(document)
-    $(&#39;#musicMouseDrag&#39;).on (&#39;mousedown&#39;, function (e) &amp;#123;
-      // 阻止文本选中
-      $DOC.bind (&quot;selectstart&quot;, function () &amp;#123;
-        return false;
-      &amp;#125;);
-      $(&#39;#musicDragArea&#39;).css (&#39;height&#39;, &#39;100%&#39;);
-      var $moveTarget = $(&#39;#musicMouseDrag&#39;);
-      $moveTarget.css (&#39;border&#39;, &#39;1px dashed grey&#39;)
-      var div_x = e.pageX - $moveTarget.offset ().left;
-      var div_y = e.pageY - $moveTarget.offset ().top;
-      $DOC.on (&#39;mousemove&#39;, function (e) &amp;#123;
-        var targetX = e.pageX - div_x;
-        var targetY = e.pageY - div_y;
-        targetX = targetX &lt; 0 ? 0 : (targetX + $moveTarget.outerWidth () &gt;= window.innerWidth) ? window.innerWidth - $moveTarget.outerWidth () : targetX;
-        targetY = targetY &lt; 0 ? 0 : (targetY + $moveTarget.outerHeight () &gt;= window.innerHeight) ? window.innerHeight - $moveTarget.outerHeight () : targetY;
-        $moveTarget.css (&amp;#123;&#39;left&#39;: targetX + &#39;px&#39;, &#39;top&#39;: targetY + &#39;px&#39;, &#39;bottom&#39;: &#39;inherit&#39;, &#39;right&#39;: &#39;inherit&#39;&amp;#125;)
-      &amp;#125;).on (&#39;mouseup&#39;, function () &amp;#123;
-        $DOC.unbind (&quot;selectstart&quot;);
-        $DOC.off (&#39;mousemove&#39;)
-        $DOC.off (&#39;mouseup&#39;)
-        $moveTarget.css (&#39;border&#39;, &#39;none&#39;)
-        $(&#39;#musicDragArea&#39;).css (&#39;height&#39;, &#39;10px&#39;);
-      &amp;#125;)
-    &amp;#125;)
-&lt;/script&gt;*/</code></pre>
+<span class="token comment">&lt;!-- 以下代码是为了支持随时拖动音乐控件的位置，如没有需求，可去掉下面代码 --></span>
+<p><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><br>    <span class="token keyword">var</span> $<span class="token constant">DOC</span> <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><br>    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">‘#musicMouseDrag’</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span> <span class="token punctuation">(</span><span class="token string">‘mousedown’</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><br>      <span class="token comment">// 阻止文本选中</span><br>      $<span class="token constant">DOC</span><span class="token punctuation">.</span><span class="token function">bind</span> <span class="token punctuation">(</span><span class="token string">“selectstart”</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><br>        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">‘#musicDragArea’</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span> <span class="token punctuation">(</span><span class="token string">‘height’</span><span class="token punctuation">,</span> <span class="token string">‘100%’</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">var</span> $moveTarget <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">‘#musicMouseDrag’</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      $moveTarget<span class="token punctuation">.</span><span class="token function">css</span> <span class="token punctuation">(</span><span class="token string">‘border’</span><span class="token punctuation">,</span> <span class="token string">‘1px dashed grey’</span><span class="token punctuation">)</span><br>      <span class="token keyword">var</span> div_x <span class="token operator">=</span> e<span class="token punctuation">.</span>pageX <span class="token operator">-</span> $moveTarget<span class="token punctuation">.</span><span class="token function">offset</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>left<span class="token punctuation">;</span><br>      <span class="token keyword">var</span> div_y <span class="token operator">=</span> e<span class="token punctuation">.</span>pageY <span class="token operator">-</span> $moveTarget<span class="token punctuation">.</span><span class="token function">offset</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>top<span class="token punctuation">;</span><br>      $<span class="token constant">DOC</span><span class="token punctuation">.</span><span class="token function">on</span> <span class="token punctuation">(</span><span class="token string">‘mousemove’</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><br>        <span class="token keyword">var</span> targetX <span class="token operator">=</span> e<span class="token punctuation">.</span>pageX <span class="token operator">-</span> div_x<span class="token punctuation">;</span><br>        <span class="token keyword">var</span> targetY <span class="token operator">=</span> e<span class="token punctuation">.</span>pageY <span class="token operator">-</span> div_y<span class="token punctuation">;</span><br>        targetX <span class="token operator">=</span> targetX <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> <span class="token punctuation">(</span>targetX <span class="token operator">+</span> $moveTarget<span class="token punctuation">.</span><span class="token function">outerWidth</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> window<span class="token punctuation">.</span>innerWidth<span class="token punctuation">)</span> <span class="token operator">?</span> window<span class="token punctuation">.</span>innerWidth <span class="token operator">-</span> $moveTarget<span class="token punctuation">.</span><span class="token function">outerWidth</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> targetX<span class="token punctuation">;</span><br>        targetY <span class="token operator">=</span> targetY <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> <span class="token punctuation">(</span>targetY <span class="token operator">+</span> $moveTarget<span class="token punctuation">.</span><span class="token function">outerHeight</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> window<span class="token punctuation">.</span>innerHeight<span class="token punctuation">)</span> <span class="token operator">?</span> window<span class="token punctuation">.</span>innerHeight <span class="token operator">-</span> $moveTarget<span class="token punctuation">.</span><span class="token function">outerHeight</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> targetY<span class="token punctuation">;</span><br>        $moveTarget<span class="token punctuation">.</span><span class="token function">css</span> <span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">‘left’</span><span class="token operator">:</span> targetX <span class="token operator">+</span> <span class="token string">‘px’</span><span class="token punctuation">,</span> <span class="token string">‘top’</span><span class="token operator">:</span> targetY <span class="token operator">+</span> <span class="token string">‘px’</span><span class="token punctuation">,</span> <span class="token string">‘bottom’</span><span class="token operator">:</span> <span class="token string">‘inherit’</span><span class="token punctuation">,</span> <span class="token string">‘right’</span><span class="token operator">:</span> <span class="token string">‘inherit’</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><br>      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span> <span class="token punctuation">(</span><span class="token string">‘mouseup’</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><br>        $<span class="token constant">DOC</span><span class="token punctuation">.</span><span class="token function">unbind</span> <span class="token punctuation">(</span><span class="token string">“selectstart”</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        $<span class="token constant">DOC</span><span class="token punctuation">.</span><span class="token function">off</span> <span class="token punctuation">(</span><span class="token string">‘mousemove’</span><span class="token punctuation">)</span><br>        $<span class="token constant">DOC</span><span class="token punctuation">.</span><span class="token function">off</span> <span class="token punctuation">(</span><span class="token string">‘mouseup’</span><span class="token punctuation">)</span><br>        $moveTarget<span class="token punctuation">.</span><span class="token function">css</span> <span class="token punctuation">(</span><span class="token string">‘border’</span><span class="token punctuation">,</span> <span class="token string">‘none’</span><span class="token punctuation">)</span><br>        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">‘#musicDragArea’</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span> <span class="token punctuation">(</span><span class="token string">‘height’</span><span class="token punctuation">,</span> <span class="token string">‘10px’</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><br>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>:hexoPostRenderEscape–&gt;</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>
@@ -1187,7 +1135,6 @@
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1198,22 +1145,36 @@
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1221,7 +1182,6 @@
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1289,35 +1249,17 @@
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

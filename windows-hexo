@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1035,30 +1035,31 @@
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p>1).下载：从官网下载windows版本的git,地址在下方。<br><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a><br>2).安装：双击安装，一直点击下一步即可</p>
 <h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><p>1).下载：从官网下载windows版本的node.js安装包（.msi后缀），地址下方<br><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">https://nodejs.org/zh-cn/download/</a><br>2).安装：双击安装，一直点击下一步即可</p>
 <h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>在任意目录如桌面，点击鼠标右键，选择Git Bash Here这一项，打开git bash命令框（前提是git安装成功），如下图<br><img src="http://img.saodiyang.com/FraxkCebAzx-dlPGsUmgcLZRR_Lj.png" alt="鼠标右键"><br>在打开的命令窗内输入下面的命令进行安装</p>
-<pre><code class="bash">npm install hexo-cli -g</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-cli -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>安装过后，输入 <code>hexo -v</code>，出现下面信息，则表示安装成功</p>
-<pre><code class="bash">$ hexo -v
-hexo-cli: 1.0.2
-os: Windows_NT 6.1.7601 win32 x64
-http_parser: 2.7.0
-node: 6.10.0
-v8: 5.1.281.93
-uv: 1.9.1
-zlib: 1.2.8
-ares: 1.10.1-DEV
-icu: 58.2
-modules: 48
-openssl: 1.0.2k</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo -v
+hexo-cli: <span class="token number">1.0</span>.2
+os: Windows_NT <span class="token number">6.1</span>.7601 win32 x64
+http_parser: <span class="token number">2.7</span>.0
+node: <span class="token number">6.10</span>.0
+v8: <span class="token number">5.1</span>.281.93
+uv: <span class="token number">1.9</span>.1
+zlib: <span class="token number">1.2</span>.8
+ares: <span class="token number">1.10</span>.1-DEV
+icu: <span class="token number">58.2</span>
+modules: <span class="token number">48</span>
+openssl: <span class="token number">1.0</span>.2k<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="初始化blog"><a href="#初始化blog" class="headerlink" title="初始化blog"></a>初始化blog</h2><p>进入准备创建blog的目录，同样点击鼠标右键，打开git bash命令框，<br>执行一下命令进行初始化</p>
-<pre><code class="bash">$ hexo init myblog</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo init myblog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>就会自动创建一个名字为myblog目录，这时本地blog就已经创建好了。<br>进入blog目录，启动 blog</p>
-<pre><code class="bash">$ cd myblog
-$ hexo server</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> myblog
+$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>在浏览器输入 <code>127.0.0.1:4000</code>就可以访问到刚刚创建好的blog了。</p>
 <h2 id="换皮肤"><a href="#换皮肤" class="headerlink" title="换皮肤"></a>换皮肤</h2><p>如果觉的自带的皮肤太难看。可以根据以下步奏更换皮肤<br>在<a target="_blank" rel="noopener" href="https://hexo.io/themes/">官网</a> 可以查看各种各样的皮肤，挑选自己喜欢的皮肤</p>
 <p>这里以 <code>3-hexo</code> 这款皮肤为例（这款皮肤是笔者写的，效果可查看 <a target="_blank" rel="noopener" href="http://yelog.org/">yelog.org</a>）<br>1）进入皮肤的 <code>github</code> 官网，如<a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a>的网址<br>找到 <code>clone or download</code> ,复制它的url：<a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo.git">https://github.com/yelog/hexo-theme-3-hexo.git</a></p>
 <p>2）进入 <code>myblog</code> 目录，打开 <code>git bash</code> 命令框，执行以下命令将皮肤下载到themes目录下</p>
-<pre><code class="bash">$ git clone https://github.com/yelog/hexo-theme-3-hexo.git themes/3-hexo</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> clone https://github.com/yelog/hexo-theme-3-hexo.git themes/3-hexo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="3">
 <li>修改 <code>myblog/_config.yml</code> 中的 <code>theme: landscape</code> 为 <code>theme: 3-hexo</code></li>
 </ol>
@@ -1067,23 +1068,24 @@ $ hexo server</code></pre>
 </blockquote>
 <ol start="4">
 <li><p>重新渲染，启动服务器</p>
-<pre><code class="bash">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo clean <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>打开浏览器查看效果，换肤成功</p>
 </li>
 </ol>
 <h2 id="如何写文章"><a href="#如何写文章" class="headerlink" title="如何写文章"></a>如何写文章</h2><p>文章在 <code>myblog/source/_posts/</code> 下，以markdown格式写成，笔者推荐使用<code>atom</code>作为写作工具。<br>可以通过 <code>hexo new 文章名</code> 来创建一篇文章，当然也可以直接在 <code>_posts</code> 目录下直接新建.md文件。<br>执行命令 仍是在 <code>myblog</code> 目录下，打开 <code>git bash</code> 命令框。以下是常用命令，其他可以查阅官网。</p>
-<pre><code class="bash"># 创建一个标题为“git教程”的文章
-$ hexo new &quot;git教程&quot;
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 创建一个标题为“git教程”的文章</span>
+$ hexo new <span class="token string">"git教程"</span>
 
-# 清除所有渲染的页面
+<span class="token comment"># 清除所有渲染的页面</span>
 $ hexo clean
 
-# 将markdown渲染成页面
+<span class="token comment"># 将markdown渲染成页面</span>
 $ hexo g
 
-# 启动hexo
-$ hexo s</code></pre>
+<span class="token comment"># 启动hexo</span>
+$ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="发布到网上"><a href="#发布到网上" class="headerlink" title="发布到网上"></a>发布到网上</h2><p>如果想要在github上搭建blog，或者在自己的购买的服务器上搭建blog<br>可以查看笔者的往期文章</p>
 <p>今天的教程就到这里，有什么问题可以在评论区交流。</p>
 
@@ -1170,7 +1172,6 @@ $ hexo s</code></pre>
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1181,22 +1182,36 @@ $ hexo s</code></pre>
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1204,7 +1219,6 @@ $ hexo s</code></pre>
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1272,35 +1286,17 @@ $ hexo s</code></pre>
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

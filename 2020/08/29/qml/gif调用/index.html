@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -989,7 +989,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:164</span>
+        <span>字数:148</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1042,59 +1042,60 @@
 <li>在线预览</li>
 </ul>
 <p><img src="https://github.com/RobinSea/RobinSea.github.io/tree/master/img/%E6%95%88%E6%9E%9C%E5%9B%BE/Gif%E8%B0%83%E7%94%A8.png" alt="Gif调用" title="Gif调用"></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><pre><code class="qml">import QtQuick 2.3
-import QtQuick.Window 2.2
-import QtQuick.Controls 1.2
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><pre class="line-numbers language-qml" data-language="qml"><code class="language-qml"><span class="token keyword">import</span> QtQuick 2.3
+<span class="token keyword">import</span> QtQuick.Window 2.2
+<span class="token keyword">import</span> QtQuick.Controls 1.2
 
-Item&amp;#123;
+<span class="token class-name">Item</span><span class="token punctuation">&#123;</span>
 
-    visible: true;
-    width: animated.width;
-    height: animated.height + 40;
+    <span class="token property">visible</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token boolean">true</span></span><span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">animated<span class="token punctuation">.</span>width</span><span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">animated<span class="token punctuation">.</span>height <span class="token operator">+</span> <span class="token number">40</span></span><span class="token punctuation">;</span>
 
-    AnimatedImage &amp;#123;
-        id: animated;       
-        source: &amp;#123;
-            &quot;https://github.com/RobinSea/RobinSea.github.io/tree/master/img/链接资源/test.gif&quot;
-            //&quot;file:///E:/workspace/qmlTest/testGrid/untitled/image/test.gif&quot;
-            //path.replace(/\//g, &#39;&#39;)  //替换所有/为空
-        &amp;#125;
+    <span class="token class-name">AnimatedImage</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">id</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">animated</span><span class="token punctuation">;</span>       
+        <span class="token property">source</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token punctuation">&#123;</span>
+            <span class="token string">"https://github.com/RobinSea/RobinSea.github.io/tree/master/img/链接资源/test.gif"</span>
+            <span class="token comment">//"file:///E:/workspace/qmlTest/testGrid/untitled/image/test.gif"</span>
+            <span class="token comment">//path.replace(/\//g, '')  //替换所有/为空</span>
+        <span class="token punctuation">&#125;</span></span>
 
-        onCurrentFrameChanged: &amp;#123;
-            info.text = &quot;%1/%2&quot;.arg(animated.currentFrame).arg(animated.frameCount);
-        &amp;#125;
-    &amp;#125;
+        <span class="token property">onCurrentFrameChanged</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token punctuation">&#123;</span>
+            info<span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string">"%1/%2"</span><span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span>animated<span class="token punctuation">.</span>currentFrame<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span>animated<span class="token punctuation">.</span>frameCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span></span>
+    <span class="token punctuation">&#125;</span>
 
-    Row&amp;#123;
-        spacing: 4;
-        anchors.horizontalCenter: parent.horizontalCenter;
-        anchors.bottom: parent.bottom;
-        anchors.bottomMargin: 4;
-        Text &amp;#123;
-            id: info;
-            width: 60;
-            height: 24;
-            color: &quot;red&quot;;
-            verticalAlignment: Text.AlignVCenter;
-            horizontalAlignment: Text.AlignRight;
-        &amp;#125;
+    <span class="token class-name">Row</span><span class="token punctuation">&#123;</span>
+        <span class="token property">spacing</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">4</span></span><span class="token punctuation">;</span>
+        <span class="token property">anchors.horizontalCenter</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">parent<span class="token punctuation">.</span>horizontalCenter</span><span class="token punctuation">;</span>
+        <span class="token property">anchors.bottom</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">parent<span class="token punctuation">.</span>bottom</span><span class="token punctuation">;</span>
+        <span class="token property">anchors.bottomMargin</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">4</span></span><span class="token punctuation">;</span>
+        <span class="token class-name">Text</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">id</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">info</span><span class="token punctuation">;</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">60</span></span><span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">24</span></span><span class="token punctuation">;</span>
+            <span class="token property">color</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token string">"red"</span></span><span class="token punctuation">;</span>
+            <span class="token property">verticalAlignment</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">Text<span class="token punctuation">.</span>AlignVCenter</span><span class="token punctuation">;</span>
+            <span class="token property">horizontalAlignment</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">Text<span class="token punctuation">.</span>AlignRight</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-        Button &amp;#123;
-            width: 60;
-            height: 24;
-            text: (animated.paused == true) ? &quot;Play&quot; : &quot;Pause&quot;;
-            onClicked: animated.paused = !animated.paused;
-        &amp;#125;
+        <span class="token class-name">Button</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">60</span></span><span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">24</span></span><span class="token punctuation">;</span>
+            <span class="token property">text</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token punctuation">(</span>animated<span class="token punctuation">.</span>paused <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">"Play"</span> <span class="token operator">:</span> <span class="token string">"Pause"</span></span><span class="token punctuation">;</span>
+            <span class="token property">onClicked</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">animated<span class="token punctuation">.</span>paused <span class="token operator">=</span> <span class="token operator">!</span>animated<span class="token punctuation">.</span>paused</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-        Button &amp;#123;
-            width: 60;
-            height: 24;
-            text: &quot;Quit&quot;;
-            onClicked: Qt.quit();
-        &amp;#125;
-    &amp;#125;
-&amp;#125;
-</code></pre>
+        <span class="token class-name">Button</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">60</span></span><span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token number">24</span></span><span class="token punctuation">;</span>
+            <span class="token property">text</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript"><span class="token string">"Quit"</span></span><span class="token punctuation">;</span>
+            <span class="token property">onClicked</span><span class="token punctuation">:</span> <span class="token javascript-expression language-javascript">Qt<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>
@@ -1179,7 +1180,6 @@ Item&amp;#123;
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1190,22 +1190,36 @@ Item&amp;#123;
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1213,7 +1227,6 @@ Item&amp;#123;
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1281,35 +1294,17 @@ Item&amp;#123;
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 

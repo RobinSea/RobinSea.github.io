@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -288,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="38.7k">
+<input type="hidden" id="yelog_site_word_count" value="38.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1036,47 +1036,57 @@
 <p>注册完后，可得到 <code>Client ID</code> 和 <code>Client Secret</code></p>
 <h3 id="2-新建存放评论的仓库"><a href="#2-新建存放评论的仓库" class="headerlink" title="2. 新建存放评论的仓库"></a>2. 新建存放评论的仓库</h3><p>因为 <code>gitalk</code> 是基于 Github 的 Issue 的，所以需要指定一个仓库，用来承接 gitalk 的评论，我们一般使用 Github Page 来做我们博客的评论，所以，新建仓库名为 <code>xxx.github.io</code>，其中 xxx 为你的 Github 用户名</p>
 <h3 id="3-配置主题"><a href="#3-配置主题" class="headerlink" title="3. 配置主题"></a>3. 配置主题</h3><p>在主题下 <code>_config.yml</code> 中找到如下配置，启用评论，并使用 <code>gitalk</code></p>
-<pre><code class="yaml">##########评论设置#############
-comment:
-  on: true
-  type: gitalk</code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment">##########评论设置#############</span>
+<span class="token key atrule">comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> gitalk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>在主题下 <code>_config.yml</code> 中找到 gitalk 配置，将 第1步 得到的  <code>Client ID</code> 和 <code>Client Secret</code> 复制到如下位置</p>
-<pre><code class="yaml">gitalk:
-  githubID:    # 填你的 github 用户名
-  repo:  xxx.github.io     # 承载评论的仓库，一般使用 Github Page 仓库
-  ClientID:   # 第1步获得 Client ID
-  ClientSecret:  # 第1步获得 Client Secret
-  adminUser:     # Github 用户名
-  distractionFreeMode: true
-  language: zh-CN
-  perPage: 10</code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">gitalk</span><span class="token punctuation">:</span>
+  <span class="token key atrule">githubID</span><span class="token punctuation">:</span>    <span class="token comment"># 填你的 github 用户名</span>
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span>  xxx.github.io     <span class="token comment"># 承载评论的仓库，一般使用 Github Page 仓库</span>
+  <span class="token key atrule">ClientID</span><span class="token punctuation">:</span>   <span class="token comment"># 第1步获得 Client ID</span>
+  <span class="token key atrule">ClientSecret</span><span class="token punctuation">:</span>  <span class="token comment"># 第1步获得 Client Secret</span>
+  <span class="token key atrule">adminUser</span><span class="token punctuation">:</span>     <span class="token comment"># Github 用户名</span>
+  <span class="token key atrule">distractionFreeMode</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">language</span><span class="token punctuation">:</span> zh<span class="token punctuation">-</span>CN
+  <span class="token key atrule">perPage</span><span class="token punctuation">:</span> <span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="二、来必力"><a href="#二、来必力" class="headerlink" title="二、来必力"></a>二、来必力</h2><h3 id="1-创建来必力账号，并选择-City-免费版"><a href="#1-创建来必力账号，并选择-City-免费版" class="headerlink" title="1. 创建来必力账号，并选择 City 免费版"></a>1. 创建来必力账号，并选择 City 免费版</h3><p>官网<a target="_blank" rel="noopener" href="http://livere.com/">http://livere.com/</a> ，创建账号，点击上面的安装，选择 City 免费版</p>
 <p><img src="https://i.loli.net/2020/05/23/mLYfjrJ1UgOIpiD.png" alt="选择 city 免费版"></p>
 <p>复制获取到的代码中的 <code>data-uid</code></p>
 <p><img src="http://yelog-img.test.upcdn.net/447D431A-998C-4327-9463-A51D7CE91CE3.png" alt="复制 data-uid"></p>
 <h3 id="2-主题选择使用来必力评论"><a href="#2-主题选择使用来必力评论" class="headerlink" title="2. 主题选择使用来必力评论"></a>2. 主题选择使用来必力评论</h3><p>在主题下 <code>_config.yml</code>  </p>
 <p>在找到来必力配置如下，第一步中复制的 <code>data-uid</code> 粘贴到下面 <code>data_uid</code> 处</p>
-<pre><code class="yaml">livere:
-  data_uid: xxxxxx</code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">livere</span><span class="token punctuation">:</span>
+  <span class="token key atrule">data_uid</span><span class="token punctuation">:</span> xxxxxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>找到以下代码， 开启并选择 livere (来必力)</p>
-<pre><code class="yaml">##########评论设置#############
-comment:
-  on: true
-  type: livere</code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment">##########评论设置#############</span>
+<span class="token key atrule">comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> livere<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="三、utteranc"><a href="#三、utteranc" class="headerlink" title="三、utteranc"></a>三、utteranc</h2><p>官网地址：<a target="_blank" rel="noopener" href="https://utteranc.es/">https://utteranc.es/</a></p>
 <h3 id="1-安装-utterances"><a href="#1-安装-utterances" class="headerlink" title="1. 安装 utterances"></a>1. 安装 utterances</h3><p><a target="_blank" rel="noopener" href="https://github.com/apps/utterances">点我进行安装</a></p>
 <h3 id="2-配置主题"><a href="#2-配置主题" class="headerlink" title="2. 配置主题"></a>2. 配置主题</h3><p>在主题下 <code>_config.yml</code> 中找到 <code>utteranc</code> 的配置 ，修改 <code>repo</code> 为自己的仓库名</p>
-<pre><code class="yaml">utteranc:
-  repo: xxx/xxx.github.io # 承载评论的仓库，填上自己的仓库
-  issue_term: pathname    # Issue 与 博客文章 之间映射关系
-  label: utteranc         # 创建的 Issue 添加的标签
-  theme: github-light     # 主题，可选主题请查看官方文档 https://utteranc.es/#heading-theme
-# 官方文档 https://utteranc.es/
-# 使用说明 https://yelog.org//2020/05/23/3-hexo-comment/</code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">utteranc</span><span class="token punctuation">:</span>
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> xxx/xxx.github.io <span class="token comment"># 承载评论的仓库，填上自己的仓库</span>
+  <span class="token key atrule">issue_term</span><span class="token punctuation">:</span> pathname    <span class="token comment"># Issue 与 博客文章 之间映射关系</span>
+  <span class="token key atrule">label</span><span class="token punctuation">:</span> utteranc         <span class="token comment"># 创建的 Issue 添加的标签</span>
+  <span class="token key atrule">theme</span><span class="token punctuation">:</span> github<span class="token punctuation">-</span>light     <span class="token comment"># 主题，可选主题请查看官方文档 https://utteranc.es/#heading-theme</span>
+<span class="token comment"># 官方文档 https://utteranc.es/</span>
+<span class="token comment"># 使用说明 https://yelog.org//2020/05/23/3-hexo-comment/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>在主题下 <code>_config.yml</code> 中找到如下配置，启用评论，并使用 <code>utteranc</code></p>
-<pre><code class="yaml">comment:
-  on: true
-  type: utteranc</code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">comment</span><span class="token punctuation">:</span>
+  <span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> utteranc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>
@@ -1161,7 +1171,6 @@ comment:
         
             $("#post .pjax table").addClass("green_title");
         
-
         /*渲染打赏样式*/
         
         $("input[name=pay]").on("click", function () {
@@ -1172,22 +1181,36 @@ comment:
             }
         })
         
-
         /*高亮代码块行号*/
         
-
         /*访问数量*/
         
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
         
-
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
-
     /*打赏页面隐藏与展示*/
     
     function dashangToggle() {
@@ -1195,7 +1218,6 @@ comment:
         $(".hide_box").fadeToggle();
     }
     
-
 </script>
 
 <!--加入行号的高亮代码块样式-->
@@ -1263,35 +1285,17 @@ comment:
     }
     
     
-
     /*列表样式*/
     
-
     /* 背景图样式 */
     
     
-
-
     /*引用块样式*/
     
-
     /*文章列表背景图*/
     
-
-    
-    #post .pjax article :not(pre) > code {
-        color: #24292e;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
-        background-color: rgba(27,31,35,.05);
-        border-radius: 3px;
-        font-size: 85%;
-        margin: 0;
-        padding: .2em .4em;
-    }
     
 </style>
-
-
 
 
 
