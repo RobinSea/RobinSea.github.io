@@ -23,6 +23,8 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
+<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
 <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -47,7 +49,7 @@
   <input class="theme_preload_comment" value="">
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
-  <input id="theme_highlight_on" value="false" />
+  <input id="theme_highlight_on" value="true" />
   <input id="theme_code_copy" value="true" />
 </div>
 
@@ -286,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="39.6k">
+<input type="hidden" id="yelog_site_word_count" value="38.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -985,7 +987,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:180</span>
+        <span>字数:156</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1042,8 +1044,50 @@
 <li>本地预览</li>
 </ul>
 <p><img src="%E6%95%88%E6%9E%9C%E5%9B%BE%5C%E8%B7%91%E9%A9%AC%E7%81%AF%E5%AE%9E%E7%8E%B0.png" alt="Gif调用" title="Gif调用"></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> QtQuick <span class="number">2.0</span></span><br><span class="line"></span><br><span class="line"><span class="title">Rectangle</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">600</span></span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200</span></span><br><span class="line">    <span class="attribute">color</span>: <span class="string">&quot;steelblue&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">property</span><span class="string"> int textWidth</span>: <span class="number">0</span></span><br><span class="line">    <span class="title">Rectangle</span>&#123;</span><br><span class="line">        <span class="attribute">id:</span><span class="string">itemScroll</span></span><br><span class="line">        <span class="attribute">width</span>:<span class="number">237</span></span><br><span class="line">        <span class="attribute">height</span>:<span class="number">26</span></span><br><span class="line">        <span class="attribute">x</span>:<span class="number">200</span></span><br><span class="line">        <span class="attribute">y</span>:<span class="number">80</span></span><br><span class="line">        <span class="attribute">color</span>: <span class="string">&quot;red&quot;</span></span><br><span class="line">        <span class="attribute">clip</span>: <span class="literal">true</span></span><br><span class="line">        <span class="title">Text</span>&#123;</span><br><span class="line">            <span class="attribute">id:</span><span class="string">txtInfo</span></span><br><span class="line">            <span class="attribute">font.pixelSize</span>: <span class="number">26</span></span><br><span class="line">            <span class="attribute">opacity</span>: <span class="number">0.7</span></span><br><span class="line">            <span class="attribute">text</span>: <span class="string">&quot;进入环岛图标，右侧通行地区的逆时针环岛&quot;</span></span><br><span class="line">            <span class="attribute">onWidthChanged</span>: &#123;</span><br><span class="line">                <span class="keyword">if</span>(width&gt;<span class="number">237</span>)&#123;</span><br><span class="line">                    textWidth=txtInfo.width</span><br><span class="line">                    x=<span class="number">0</span>;</span><br><span class="line">                    animScroll.running=<span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="title">else</span>&#123;</span><br><span class="line">                    animScroll.running=<span class="literal">false</span>;x=(((<span class="number">237</span>-width)/<span class="number">2</span>))</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title">SequentialAnimation</span>&#123;</span><br><span class="line">            <span class="attribute">id:</span><span class="string"> animScroll</span></span><br><span class="line">            <span class="attribute">loops</span>: Animation.Infinite</span><br><span class="line">            <span class="title">PropertyAnimation</span>&#123; <span class="attribute">target</span>: txtInfo; <span class="keyword">property</span><span class="string"></span>: <span class="string">&quot;x&quot;</span>; <span class="attribute">from</span>: <span class="number">0</span>; <span class="attribute">to</span>: -(textWidth); <span class="attribute">duration</span>: (textWidth)*<span class="number">10</span>; &#125;</span><br><span class="line">            <span class="title">PropertyAnimation</span>&#123; <span class="attribute">target</span>: txtInfo; <span class="keyword">property</span><span class="string"></span>: <span class="string">&quot;x&quot;</span>; <span class="attribute">from</span>: <span class="number">237</span>; <span class="attribute">to</span>: <span class="number">0</span>; <span class="attribute">duration</span>: (<span class="number">237</span>)*<span class="number">10</span>; &#125;</span><br><span class="line">            <span class="attribute">onStopped</span>: &#123;</span><br><span class="line">                txtInfo.x = <span class="number">0</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><pre><code class="qml">import QtQuick 2.0
 
+Rectangle &amp;#123;
+    width: 600
+    height: 200
+    color: &quot;steelblue&quot;
+
+    property int textWidth: 0
+    Rectangle&amp;#123;
+        id:itemScroll
+        width:237
+        height:26
+        x:200
+        y:80
+        color: &quot;red&quot;
+        clip: true
+        Text&amp;#123;
+            id:txtInfo
+            font.pixelSize: 26
+            opacity: 0.7
+            text: &quot;进入环岛图标，右侧通行地区的逆时针环岛&quot;
+            onWidthChanged: &amp;#123;
+                if(width&gt;237)&amp;#123;
+                    textWidth=txtInfo.width
+                    x=0;
+                    animScroll.running=true;
+                &amp;#125;
+                else&amp;#123;
+                    animScroll.running=false;x=(((237-width)/2))
+                &amp;#125;
+            &amp;#125;
+        &amp;#125;
+        SequentialAnimation&amp;#123;
+            id: animScroll
+            loops: Animation.Infinite
+            PropertyAnimation&amp;#123; target: txtInfo; property: &quot;x&quot;; from: 0; to: -(textWidth); duration: (textWidth)*10; &amp;#125;
+            PropertyAnimation&amp;#123; target: txtInfo; property: &quot;x&quot;; from: 237; to: 0; duration: (237)*10; &amp;#125;
+            onStopped: &amp;#123;
+                txtInfo.x = 0
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
+</code></pre>
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>

@@ -23,6 +23,8 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
+<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
 <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -47,7 +49,7 @@
   <input class="theme_preload_comment" value="">
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
-  <input id="theme_highlight_on" value="false" />
+  <input id="theme_highlight_on" value="true" />
   <input id="theme_code_copy" value="true" />
 </div>
 
@@ -286,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="39.6k">
+<input type="hidden" id="yelog_site_word_count" value="38.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -983,7 +985,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:948</span>
+        <span>字数:899</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1033,25 +1035,96 @@
 <h2 id="1、静态编译问题"><a href="#1、静态编译问题" class="headerlink" title="1、静态编译问题"></a>1、静态编译问题</h2><p>（1）常规使用</p>
 <ul>
 <li><p>go1.11.2版本之前</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go build -ldflags -extldflags=-static</span><br></pre></td></tr></table></figure></li>
+<pre><code class="bash">go build -ldflags -extldflags=-static</code></pre>
+</li>
 <li><p>go1.11.2</p>
 <p>可以直接在声明C或C++代码区域添加-static</p>
 </li>
 </ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#cgo CFLAGS: -D_REENTRANT</span></span><br><span class="line"><span class="comment">//#cgo LDFLAGS:-static </span></span><br><span class="line"><span class="comment">//#cgo pkg-config: libavutil</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;C&quot;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="go">//#cgo CFLAGS: -D_REENTRANT
+//#cgo LDFLAGS:-static 
+//#cgo pkg-config: libavutil
+import &quot;C&quot;</code></pre>
 <p> （2）go调用ffmpeg</p>
 <p>  正常情况以上办法就可以编译生成静态可执行文件，但是go调用ffmpeg时就不行了，因为要用到glibc只能进行动态链接，解决办法是修改ffmpeg编译后生成的pkgconfig中的相关*.pc文件。</p>
 <p> -Wl,-Bstatic：ffmpeg接口强制静态链接， -Wl,-Bdynamic -lc :glibc强制动态链接 ，将libav-开头的.pc文件改过就好。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Conflicts:</span><br><span class="line">Libs: -L$&#123;libdir&#125; -Wl,-Bstatic -lavutil -lm -Wl,-Bdynamic -lc </span><br></pre></td></tr></table></figure>
+<pre><code class="pc">Conflicts:
+Libs: -L$&amp;#123;libdir&amp;#125; -Wl,-Bstatic -lavutil -lm -Wl,-Bdynamic -lc </code></pre>
 <p> 注：本人使用过程中发现要先进行动态编译后再进行以上操作才可，原因未明。</p>
 <h2 id="2、找到合适的ffmpeg包"><a href="#2、找到合适的ffmpeg包" class="headerlink" title="2、找到合适的ffmpeg包"></a>2、找到合适的ffmpeg包</h2><p> 本人在原先<a target="_blank" rel="noopener" href="https://github.com/imkira/go-libav">go-libav</a>包的基础上做了很多改动，不知这个包为什么有那么多star，结果确连example都跑不起来，最后无奈进行了些许改动，例如超时函数的实现，音频数据的处理等。修改后的包看<a target="_blank" rel="noopener" href="https://github.com/RobinSea/glibav">glibav</a>，暂无时间写example，因项目紧任务重，未来得及进行重新架构，本人的项目主要功能是处理各种视频stream生成jpg和wav数据然后发送到kafka，已经上线使用。</p>
 <h2 id="3、项目性能调优"><a href="#3、项目性能调优" class="headerlink" title="3、项目性能调优"></a>3、项目性能调优</h2><p> 在实际应用中发现服务性能与完全用C编写性能差距还是很大的，最后使用多个goroutine勉强达到业务需求。以下列举一些性能调优的常用命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、goTool之pprof的使用</span><br><span class="line">//生成cpu profile</span><br><span class="line">go <span class="built_in">test</span> -run=^$ -bench=. -cpuprofile=profile.out</span><br><span class="line">//生成memery profile</span><br><span class="line">go <span class="built_in">test</span> -run=^$ -bench=. -memprofile=profile.out</span><br><span class="line">//使用原生pprof启动Web UI</span><br><span class="line">pprof -http=:8080 profile.out</span><br><span class="line">2、代码优化--goreporter</span><br><span class="line">goreporter -p [projectRelativePath] -r [reportPath] -e [exceptPackagesName] -f [json / html / text] &#123;-t templatePathIfHtml&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">1、goTool之pprof的使用
+//生成cpu profile
+go test -run=^$ -bench=. -cpuprofile=profile.out
+//生成memery profile
+go test -run=^$ -bench=. -memprofile=profile.out
+//使用原生pprof启动Web UI
+pprof -http=:8080 profile.out
+2、代码优化--goreporter
+goreporter -p [projectRelativePath] -r [reportPath] -e [exceptPackagesName] -f [json / html / text] &amp;#123;-t templatePathIfHtml&amp;#125;</code></pre>
 <h2 id="问题汇总"><a href="#问题汇总" class="headerlink" title="问题汇总"></a>问题汇总</h2><p>获取输入流帧率</p>
 <p>videoFPS 即输入流的帧率，下面是在原代码例子上改的，可以参考原示例对照，<a target="_blank" rel="noopener" href="https://github.com/imkira/go-libav">https://github.com/imkira/go-libav</a></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(si *SIConf)</span> <span class="title">openInputVideoStream</span><span class="params">(ctx *avContext)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> err error</span><br><span class="line"></span><br><span class="line">    <span class="comment">// find first video stream</span></span><br><span class="line">    <span class="keyword">if</span> ctx.decStream = videoStream(ctx.decFmt); ctx.decStream == <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Could not find a video stream. Aborting...&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> fmt.Errorf(<span class="string">&quot;Could not find a video stream&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    codecCtx := ctx.decStream.CodecContext()</span><br><span class="line">    codecPar := ctx.decStream.CodecParameters()</span><br><span class="line">    codec := avcodec.FindDecoderByID(codecCtx.CodecID())</span><br><span class="line"></span><br><span class="line">    rat := ctx.decFmt.GuessFrameRate(ctx.decStream, <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line">    si.videoFPS = <span class="keyword">float32</span>(rat.Numerator()) / <span class="keyword">float32</span>(rat.Denominator())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> codec == <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Could not find decoder:&quot;</span>, codecCtx.CodecID())</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ctx.decCodec, err = avcodec.NewContextWithCodec(codec); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Failed to create codec context:&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> err := codecCtx.CopyTo(ctx.decCodec, codecPar); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Failed to copy codec context:&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> err := ctx.decCodec.SetInt64Option(<span class="string">&quot;refcounted_frames&quot;</span>, <span class="number">1</span>); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Failed to copy codec context:&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//设置多线程</span></span><br><span class="line">    options := avutil.NewDictionary()</span><br><span class="line">    <span class="keyword">defer</span> options.Free()</span><br><span class="line">    <span class="keyword">if</span> err := options.Set(<span class="string">&quot;threads&quot;</span>, <span class="string">&quot;auto&quot;</span>); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Failed to set input options:&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> err := ctx.decCodec.OpenWithCodec(codec, options); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Failed to open codec:&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//set time base</span></span><br><span class="line">    ctx.decCodec.SetTimeBase(ctx.decStream.TimeBase())</span><br><span class="line"></span><br><span class="line">    <span class="comment">// we need a v    log.Println(ctx.decCodec.Width(), ctx.decCodec.Height(), ctx.decCodec.PixelFormat(), ctx.decCodec.TimeBase())ideo filter to push the decoded frames to</span></span><br><span class="line">    ctx.srcFilter = addFilter(ctx, <span class="string">&quot;buffer&quot;</span>, <span class="string">&quot;in&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err = ctx.srcFilter.SetImageSizeOption(<span class="string">&quot;video_size&quot;</span>, ctx.decCodec.Width(), ctx.decCodec.Height()); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Failed to set filter option:&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> err = ctx.srcFilter.SetPixelFormatOption(<span class="string">&quot;pix_fmt&quot;</span>, ctx.decCodec.PixelFormat()); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Failed to set filter option:&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> err = ctx.srcFilter.SetRationalOption(<span class="string">&quot;time_base&quot;</span>, ctx.decStream.TimeBase()); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Failed to set filter option:&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//log.Println(ctx.decCodec.Width(), ctx.decCodec.Height(), ctx.decCodec.PixelFormat(), ctx.decStream.TimeBase())</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> err = ctx.srcFilter.Init(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        logger.Error(<span class="string">&quot;Failed to initialize buffer filter:&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="go">func (si *SIConf) openInputVideoStream(ctx *avContext) error &amp;#123;
+    var err error
 
+    // find first video stream
+    if ctx.decStream = videoStream(ctx.decFmt); ctx.decStream == nil &amp;#123;
+        logger.Error(&quot;Could not find a video stream. Aborting...&quot;)
+        return fmt.Errorf(&quot;Could not find a video stream&quot;)
+    &amp;#125;
+
+    codecCtx := ctx.decStream.CodecContext()
+    codecPar := ctx.decStream.CodecParameters()
+    codec := avcodec.FindDecoderByID(codecCtx.CodecID())
+
+    rat := ctx.decFmt.GuessFrameRate(ctx.decStream, nil)
+
+    si.videoFPS = float32(rat.Numerator()) / float32(rat.Denominator())
+
+    if codec == nil &amp;#123;
+        logger.Error(&quot;Could not find decoder:&quot;, codecCtx.CodecID())
+    &amp;#125;
+    if ctx.decCodec, err = avcodec.NewContextWithCodec(codec); err != nil &amp;#123;
+        logger.Error(&quot;Failed to create codec context:&quot;, err)
+    &amp;#125;
+
+    if err := codecCtx.CopyTo(ctx.decCodec, codecPar); err != nil &amp;#123;
+        logger.Error(&quot;Failed to copy codec context:&quot;, err)
+    &amp;#125;
+    if err := ctx.decCodec.SetInt64Option(&quot;refcounted_frames&quot;, 1); err != nil &amp;#123;
+        logger.Error(&quot;Failed to copy codec context:&quot;, err)
+    &amp;#125;
+    //设置多线程
+    options := avutil.NewDictionary()
+    defer options.Free()
+    if err := options.Set(&quot;threads&quot;, &quot;auto&quot;); err != nil &amp;#123;
+        logger.Error(&quot;Failed to set input options:&quot;, err)
+    &amp;#125;
+    if err := ctx.decCodec.OpenWithCodec(codec, options); err != nil &amp;#123;
+        logger.Error(&quot;Failed to open codec:&quot;, err)
+    &amp;#125;
+
+    //set time base
+    ctx.decCodec.SetTimeBase(ctx.decStream.TimeBase())
+
+    // we need a v    log.Println(ctx.decCodec.Width(), ctx.decCodec.Height(), ctx.decCodec.PixelFormat(), ctx.decCodec.TimeBase())ideo filter to push the decoded frames to
+    ctx.srcFilter = addFilter(ctx, &quot;buffer&quot;, &quot;in&quot;)
+    if err = ctx.srcFilter.SetImageSizeOption(&quot;video_size&quot;, ctx.decCodec.Width(), ctx.decCodec.Height()); err != nil &amp;#123;
+        logger.Error(&quot;Failed to set filter option:&quot;, err)
+    &amp;#125;
+    if err = ctx.srcFilter.SetPixelFormatOption(&quot;pix_fmt&quot;, ctx.decCodec.PixelFormat()); err != nil &amp;#123;
+        logger.Error(&quot;Failed to set filter option:&quot;, err)
+    &amp;#125;
+    if err = ctx.srcFilter.SetRationalOption(&quot;time_base&quot;, ctx.decStream.TimeBase()); err != nil &amp;#123;
+        logger.Error(&quot;Failed to set filter option:&quot;, err)
+    &amp;#125;
+    //log.Println(ctx.decCodec.Width(), ctx.decCodec.Height(), ctx.decCodec.PixelFormat(), ctx.decStream.TimeBase())
+
+    if err = ctx.srcFilter.Init(); err != nil &amp;#123;
+        logger.Error(&quot;Failed to initialize buffer filter:&quot;, err)
+    &amp;#125;
+    return nil
+&amp;#125;</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>

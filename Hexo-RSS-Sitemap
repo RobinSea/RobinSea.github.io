@@ -23,6 +23,8 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
+<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
 <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -47,7 +49,7 @@
   <input class="theme_preload_comment" value="">
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
-  <input id="theme_highlight_on" value="false" />
+  <input id="theme_highlight_on" value="true" />
   <input id="theme_code_copy" value="true" />
 </div>
 
@@ -286,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="39.6k">
+<input type="hidden" id="yelog_site_word_count" value="38.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -981,7 +983,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:277</span>
+        <span>字数:260</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1028,15 +1030,27 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="添加RSS"><a href="#添加RSS" class="headerlink" title="添加RSS"></a>添加RSS</h2><p>使用<code>RSS</code>是为自己的blog提供订阅功能。</p>
-<h3 id="1-用npm安装插件"><a href="#1-用npm安装插件" class="headerlink" title="1.用npm安装插件"></a>1.用<code>npm</code>安装插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
-<h3 id="2-配置根目录-config-yml"><a href="#2-配置根目录-config-yml" class="headerlink" title="2.配置根目录_config.yml"></a>2.配置根目录_config.yml</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: http://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">#RSS订阅</span></span><br><span class="line"><span class="attr">plugin:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">hexo-generator-feed</span></span><br><span class="line"><span class="comment">#Feed Atom</span></span><br><span class="line"><span class="attr">feed:</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">atom</span></span><br><span class="line"><span class="attr">path:</span> <span class="string">atom.xml</span></span><br><span class="line"><span class="attr">limit:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-用npm安装插件"><a href="#1-用npm安装插件" class="headerlink" title="1.用npm安装插件"></a>1.用<code>npm</code>安装插件</h3><pre><code class="bash">$ npm install hexo-generator-feed --save</code></pre>
+<h3 id="2-配置根目录-config-yml"><a href="#2-配置根目录-config-yml" class="headerlink" title="2.配置根目录_config.yml"></a>2.配置根目录_config.yml</h3><pre><code class="yml"># Extensions
+## Plugins: http://hexo.io/plugins/
+#RSS订阅
+plugin:
+- hexo-generator-feed
+#Feed Atom
+feed:
+type: atom
+path: atom.xml
+limit: 20</code></pre>
 <h3 id="3-验证配置是否成功"><a href="#3-验证配置是否成功" class="headerlink" title="3.验证配置是否成功"></a>3.验证配置是否成功</h3><p>执行 <code>hexo g</code>，查看一下public目录下，如果有 <code>atom.xml</code> 文件，则表明配置成功。</p>
 <h3 id="4-显示RSS图标"><a href="#4-显示RSS图标" class="headerlink" title="4.显示RSS图标"></a>4.显示RSS图标</h3><p>这里以3-hexo主题为例，给rss添加链接<code>/atom.xml</code>修改<code>/themes/3-hexo/_config.yml</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">link:</span><br><span class="line">  rss: /atom.xml</span><br></pre></td></tr></table></figure>
+<pre><code class="xml">link:
+  rss: /atom.xml</code></pre>
 <h3 id="5-效果"><a href="#5-效果" class="headerlink" title="5.效果"></a>5.效果</h3><p><strong>链接图标：</strong><br><img src="http://img.saodiyang.com/FlmC3WWi9jzgVRdSKJ2_li5UHVsr.png" alt="图标"><br><strong>链接地址效果</strong><br><img src="http://img.saodiyang.com/FuTy1C-xSgdTTOZch_UH1355NAs9.png" alt="效果"></p>
 <h2 id="添加Sitemap"><a href="#添加Sitemap" class="headerlink" title="添加Sitemap"></a>添加Sitemap</h2><p>Sitemap，网站地图，是网站优化中重要的一环，无论是对于访问者还是对于搜索引擎。</p>
-<h3 id="1-用npm安装插件-1"><a href="#1-用npm安装插件-1" class="headerlink" title="1.用npm安装插件"></a>1.用<code>npm</code>安装插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
-<h3 id="2-配置根目录-config-yml-1"><a href="#2-配置根目录-config-yml-1" class="headerlink" title="2.配置根目录_config.yml"></a>2.配置根目录_config.yml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugin:</span><br><span class="line">- hexo-generator-feed</span><br><span class="line">- hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
+<h3 id="1-用npm安装插件-1"><a href="#1-用npm安装插件-1" class="headerlink" title="1.用npm安装插件"></a>1.用<code>npm</code>安装插件</h3><pre><code class="bash">$ npm install hexo-generator-sitemap --save</code></pre>
+<h3 id="2-配置根目录-config-yml-1"><a href="#2-配置根目录-config-yml-1" class="headerlink" title="2.配置根目录_config.yml"></a>2.配置根目录_config.yml</h3><pre><code class="xml">plugin:
+- hexo-generator-feed
+- hexo-generator-sitemap</code></pre>
 <h3 id="3-验证配置是否成功-1"><a href="#3-验证配置是否成功-1" class="headerlink" title="3.验证配置是否成功"></a>3.验证配置是否成功</h3><p>执行 <code>hexo g</code>，查看一下public目录下，如果有 <code>sitemap.xml</code> 文件，则表明配置成功。</p>
 <h3 id="4-效果"><a href="#4-效果" class="headerlink" title="4.效果"></a>4.效果</h3><p>访问 /sitemap.xml 就能看到生成的站点地图了<br><img src="http://img.saodiyang.com/FtFLZ2CSfYa_IKLS-a9ymvKvaztp.png" alt="站点地图效果"></p>
 

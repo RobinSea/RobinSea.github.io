@@ -23,6 +23,8 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
+<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
 <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -47,7 +49,7 @@
   <input class="theme_preload_comment" value="">
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
-  <input id="theme_highlight_on" value="false" />
+  <input id="theme_highlight_on" value="true" />
   <input id="theme_code_copy" value="true" />
 </div>
 
@@ -286,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="39.6k">
+<input type="hidden" id="yelog_site_word_count" value="38.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -981,7 +983,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:425</span>
+        <span>字数:411</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1030,12 +1032,20 @@
         <p>不久之前在逛blog时，发现了这款tale，今天抽空搭建了一下，将搭建过程写于此。<br>demo website：<a target="_blank" rel="noopener" href="https://tale.biezhi.me/">https://tale.biezhi.me</a></p>
 <h2 id="搭建思路"><a href="#搭建思路" class="headerlink" title="搭建思路"></a>搭建思路</h2><p>看了tale作者的(github)[<a target="_blank" rel="noopener" href="https://github.com/otale]">https://github.com/otale]</a> 发现有建好docker，所以果断使用docker搭建tale的环境</p>
 <h3 id="构建docker镜像"><a href="#构建docker镜像" class="headerlink" title="构建docker镜像"></a>构建docker镜像</h3><p>下载<a target="_blank" rel="noopener" href="https://github.com/otale/tale-docker">tale-docker</a>到本地。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载官方Dockerfile</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/otale/tale-docker.git</span><br><span class="line"><span class="comment"># 构建 tale 镜像</span></span><br><span class="line">$ docker build -t tale:1.0 .</span><br></pre></td></tr></table></figure>
+<pre><code class="bash"># 下载官方Dockerfile
+$ git clone https://github.com/otale/tale-docker.git
+# 构建 tale 镜像
+$ docker build -t tale:1.0 .</code></pre>
+<h3 id="下载tale博客文件"><a href="#下载tale博客文件" class="headerlink" title="下载tale博客文件"></a>下载tale博客文件</h3><pre><code class="bash"># 下载压缩包
+$ sudo wget http://7xls9k.dl1.z0.glb.clouddn.com/tale.zip
 
-<h3 id="下载tale博客文件"><a href="#下载tale博客文件" class="headerlink" title="下载tale博客文件"></a>下载tale博客文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载压缩包</span></span><br><span class="line">$ sudo wget http://7xls9k.dl1.z0.glb.clouddn.com/tale.zip</span><br><span class="line"></span><br><span class="line"><span class="comment"># 讲解压出来的文件夹移入home目录</span></span><br><span class="line">$ unzip tale.zip</span><br><span class="line">$ mv tale /home</span><br></pre></td></tr></table></figure>
-
-<h3 id="构建tale镜像"><a href="#构建tale镜像" class="headerlink" title="构建tale镜像"></a>构建tale镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --privileged --hostname tale --name tale \</span><br><span class="line">-v /etc/localtime:/etc/localtime:ro \</span><br><span class="line">-v /home/tale:/var/tale_home -p 80:9000 \</span><br><span class="line">-m 1024m --memory-swap -1 tale:1.0</span><br></pre></td></tr></table></figure>
-
+# 讲解压出来的文件夹移入home目录
+$ unzip tale.zip
+$ mv tale /home</code></pre>
+<h3 id="构建tale镜像"><a href="#构建tale镜像" class="headerlink" title="构建tale镜像"></a>构建tale镜像</h3><pre><code class="bash">docker run -d --privileged --hostname tale --name tale \
+-v /etc/localtime:/etc/localtime:ro \
+-v /home/tale:/var/tale_home -p 80:9000 \
+-m 1024m --memory-swap -1 tale:1.0</code></pre>
 <h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><p>浏览器进入 <code>127.0.0.1</code> 即可访问<br><img src="http://img.saodiyang.com/FtwT7OgspZR3YjpJhH5VSuUmnLjP.png" alt="管理后台"><br><img src="http://img.saodiyang.com/FnFBhuwvQ4atG2F2ahdj5PSFF3eL.png" alt="首页"><br><img src="http://img.saodiyang.com/Fg1891hUmEATDbFDBgdBsncb4U1U.png" alt="文章"></p>
 <h2 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h2><h3 id="管理后台"><a href="#管理后台" class="headerlink" title="管理后台"></a>管理后台</h3><ol>
 <li>文章支持Markdown和富文本。</li>

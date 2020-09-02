@@ -23,6 +23,8 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
+<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
 <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -47,7 +49,7 @@
   <input class="theme_preload_comment" value="">
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
-  <input id="theme_highlight_on" value="false" />
+  <input id="theme_highlight_on" value="true" />
   <input id="theme_code_copy" value="true" />
 </div>
 
@@ -286,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="39.6k">
+<input type="hidden" id="yelog_site_word_count" value="38.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -983,7 +985,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:1,384</span>
+        <span>字数:1,348</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1059,8 +1061,10 @@
 <hr>
 <h3 id="2-书写一个质能守恒公式-LaTeX"><a href="#2-书写一个质能守恒公式-LaTeX" class="headerlink" title="2. 书写一个质能守恒公式[^LaTeX]"></a>2. 书写一个质能守恒公式[^LaTeX]</h3><p>$$<br>E=mc^2<br>$$</p>
 <hr>
-<h3 id="3-高亮一段代码-code"><a href="#3-高亮一段代码-code" class="headerlink" title="3. 高亮一段代码[^code]"></a>3. 高亮一段代码[^code]</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给页面里所有的 DOM 元素添加一个 1px 的描边（outline）;</span></span><br><span class="line">[].forEach.call($$(<span class="string">&quot;*&quot;</span>),<span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">  a.style.outline=<span class="string">&quot;1px solid #&quot;</span>+(~~(<span class="built_in">Math</span>.random()*(<span class="number">1</span>&lt;&lt;<span class="number">24</span>))).toString(<span class="number">16</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
+<h3 id="3-高亮一段代码-code"><a href="#3-高亮一段代码-code" class="headerlink" title="3. 高亮一段代码[^code]"></a>3. 高亮一段代码[^code]</h3><pre><code class="js">// 给页面里所有的 DOM 元素添加一个 1px 的描边（outline）;
+[].forEach.call($$(&quot;*&quot;),function(a)&amp;#123;
+  a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()*(1&lt;&lt;24))).toString(16);
+&amp;#125;)</code></pre>
 <h3 id="4-高效绘制流程图"><a href="#4-高效绘制流程图" class="headerlink" title="4. 高效绘制流程图"></a>4. 高效绘制<a target="_blank" rel="noopener" href="https://github.com/knsv/mermaid#flowchart">流程图</a></h3><pre class="mermaid">graph TD;
   A-->B;
   A-->C;
@@ -1097,8 +1101,78 @@
     发布: 2d
     验收: 3d</pre>
 
-<h3 id="7-支持图表"><a href="#7-支持图表" class="headerlink" title="7. 支持图表"></a>7. 支持图表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;backgroundColor&quot;: &quot;#212121&quot;,</span><br><span class="line">  &quot;title&quot;: &#123;</span><br><span class="line">    &quot;text&quot;: &quot;「晚晴幽草轩」访问来源&quot;,</span><br><span class="line">    &quot;subtext&quot;: &quot;2019 年 6 月份&quot;,</span><br><span class="line">    &quot;x&quot;: &quot;center&quot;,</span><br><span class="line">    &quot;textStyle&quot;: &#123;</span><br><span class="line">      &quot;color&quot;: &quot;#f2f2f2&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;tooltip&quot;: &#123;</span><br><span class="line">    &quot;trigger&quot;: &quot;item&quot;,</span><br><span class="line">    &quot;formatter&quot;: &quot;&#123;a&#125; &lt;br&#x2F;&gt;&#123;b&#125; : &#123;c&#125; (&#123;d&#125;%)&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;legend&quot;: &#123;</span><br><span class="line">    &quot;orient&quot;: &quot;vertical&quot;,</span><br><span class="line">    &quot;left&quot;: &quot;left&quot;,</span><br><span class="line">    &quot;data&quot;: [</span><br><span class="line">      &quot;搜索引擎&quot;,</span><br><span class="line">      &quot;直接访问&quot;,</span><br><span class="line">      &quot;推荐&quot;,</span><br><span class="line">      &quot;其他&quot;,</span><br><span class="line">      &quot;社交平台&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;textStyle&quot;: &#123;</span><br><span class="line">      &quot;color&quot;: &quot;#f2f2f2&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;series&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;name&quot;: &quot;访问来源&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;pie&quot;,</span><br><span class="line">      &quot;radius&quot;: &quot;55%&quot;,</span><br><span class="line">      &quot;center&quot;: [</span><br><span class="line">        &quot;50%&quot;,</span><br><span class="line">        &quot;60%&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;data&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;value&quot;: 10440,</span><br><span class="line">          &quot;name&quot;: &quot;搜索引擎&quot;,</span><br><span class="line">          &quot;itemStyle&quot;: &#123;</span><br><span class="line">            &quot;color&quot;: &quot;#ef4136&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;value&quot;: 4770,</span><br><span class="line">          &quot;name&quot;: &quot;直接访问&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;value&quot;: 2430,</span><br><span class="line">          &quot;name&quot;: &quot;推荐&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;value&quot;: 342,</span><br><span class="line">          &quot;name&quot;: &quot;其他&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;value&quot;: 18,</span><br><span class="line">          &quot;name&quot;: &quot;社交平台&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;itemStyle&quot;: &#123;</span><br><span class="line">        &quot;emphasis&quot;: &#123;</span><br><span class="line">          &quot;shadowBlur&quot;: 10,</span><br><span class="line">          &quot;shadowOffsetX&quot;: 0,</span><br><span class="line">          &quot;shadowColor&quot;: &quot;rgba(0, 0, 0, 0.5)&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="7-支持图表"><a href="#7-支持图表" class="headerlink" title="7. 支持图表"></a>7. 支持图表</h3><pre><code class="echarts">&amp;#123;
+  &quot;backgroundColor&quot;: &quot;#212121&quot;,
+  &quot;title&quot;: &amp;#123;
+    &quot;text&quot;: &quot;「晚晴幽草轩」访问来源&quot;,
+    &quot;subtext&quot;: &quot;2019 年 6 月份&quot;,
+    &quot;x&quot;: &quot;center&quot;,
+    &quot;textStyle&quot;: &amp;#123;
+      &quot;color&quot;: &quot;#f2f2f2&quot;
+    &amp;#125;
+  &amp;#125;,
+  &quot;tooltip&quot;: &amp;#123;
+    &quot;trigger&quot;: &quot;item&quot;,
+    &quot;formatter&quot;: &quot;&amp;#123;a&amp;#125; &lt;br/&gt;&amp;#123;b&amp;#125; : &amp;#123;c&amp;#125; (&amp;#123;d&amp;#125;%)&quot;
+  &amp;#125;,
+  &quot;legend&quot;: &amp;#123;
+    &quot;orient&quot;: &quot;vertical&quot;,
+    &quot;left&quot;: &quot;left&quot;,
+    &quot;data&quot;: [
+      &quot;搜索引擎&quot;,
+      &quot;直接访问&quot;,
+      &quot;推荐&quot;,
+      &quot;其他&quot;,
+      &quot;社交平台&quot;
+    ],
+    &quot;textStyle&quot;: &amp;#123;
+      &quot;color&quot;: &quot;#f2f2f2&quot;
+    &amp;#125;
+  &amp;#125;,
+  &quot;series&quot;: [
+    &amp;#123;
+      &quot;name&quot;: &quot;访问来源&quot;,
+      &quot;type&quot;: &quot;pie&quot;,
+      &quot;radius&quot;: &quot;55%&quot;,
+      &quot;center&quot;: [
+        &quot;50%&quot;,
+        &quot;60%&quot;
+      ],
+      &quot;data&quot;: [
+        &amp;#123;
+          &quot;value&quot;: 10440,
+          &quot;name&quot;: &quot;搜索引擎&quot;,
+          &quot;itemStyle&quot;: &amp;#123;
+            &quot;color&quot;: &quot;#ef4136&quot;
+          &amp;#125;
+        &amp;#125;,
+        &amp;#123;
+          &quot;value&quot;: 4770,
+          &quot;name&quot;: &quot;直接访问&quot;
+        &amp;#125;,
+        &amp;#123;
+          &quot;value&quot;: 2430,
+          &quot;name&quot;: &quot;推荐&quot;
+        &amp;#125;,
+        &amp;#123;
+          &quot;value&quot;: 342,
+          &quot;name&quot;: &quot;其他&quot;
+        &amp;#125;,
+        &amp;#123;
+          &quot;value&quot;: 18,
+          &quot;name&quot;: &quot;社交平台&quot;
+        &amp;#125;
+      ],
+      &quot;itemStyle&quot;: &amp;#123;
+        &quot;emphasis&quot;: &amp;#123;
+          &quot;shadowBlur&quot;: 10,
+          &quot;shadowOffsetX&quot;: 0,
+          &quot;shadowColor&quot;: &quot;rgba(0, 0, 0, 0.5)&quot;
+        &amp;#125;
+      &amp;#125;
+    &amp;#125;
+  ]
+&amp;#125;</code></pre>
 <blockquote>
 <p><strong>备注</strong>：上述 echarts 图表📈，其数据，须使用严格的 <strong>JSON</strong> 格式；您可使用 JSON.stringify(data)，将对象传换从而得标准数据，即可正常使用。</p>
 </blockquote>

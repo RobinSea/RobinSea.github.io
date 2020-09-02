@@ -23,6 +23,8 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
+<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
 <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -47,7 +49,7 @@
   <input class="theme_preload_comment" value="">
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
-  <input id="theme_highlight_on" value="false" />
+  <input id="theme_highlight_on" value="true" />
   <input id="theme_code_copy" value="true" />
 </div>
 
@@ -286,7 +288,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="54">
-<input type="hidden" id="yelog_site_word_count" value="39.6k">
+<input type="hidden" id="yelog_site_word_count" value="38.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -983,7 +985,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:255</span>
+        <span>字数:203</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1033,8 +1035,86 @@
 <li>GridView使用MouseArea进行text触发</li>
 </ul>
 <h3 id="效果预览："><a href="#效果预览：" class="headerlink" title="效果预览："></a>效果预览：</h3><p><img src="https://github.com/RobinSea/RobinSea.github.io/tree/master/img/%E6%95%88%E6%9E%9C%E5%9B%BE/GridView%E4%BD%BF%E7%94%A8MouseArea.png" alt="GridView使用MouseArea" title="GridView使用MouseArea"></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> QtQuick <span class="number">2.0</span></span><br><span class="line"></span><br><span class="line"><span class="title">Item</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">600</span></span><br><span class="line">    <span class="attribute">width</span>:<span class="number">950</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">property</span><span class="string"> int currentPressSourceIndex</span>: <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="title">Loader</span> &#123;</span><br><span class="line">      <span class="attribute">anchors.fill</span>: <span class="built_in">parent</span></span><br><span class="line">      <span class="attribute">sourceComponent</span>: cmSwitchSource</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title">Component</span> &#123;</span><br><span class="line">        <span class="attribute">id:</span><span class="string">cmSwitchSource</span></span><br><span class="line">        <span class="title">Item</span>&#123;</span><br><span class="line">            <span class="title">Rectangle</span>&#123;</span><br><span class="line">                <span class="attribute">id:</span><span class="string"> imgSwitch</span></span><br><span class="line">                <span class="attribute">anchors.centerIn</span>: <span class="built_in">parent</span></span><br><span class="line">                <span class="attribute">height</span>: <span class="number">600</span>/<span class="number">2</span></span><br><span class="line">                <span class="attribute">width</span>:<span class="number">950</span>/<span class="number">2</span></span><br><span class="line">                <span class="attribute">color</span>: <span class="string">&quot;steelblue&quot;</span></span><br><span class="line">                <span class="comment">//防止按键穿透</span></span><br><span class="line">                <span class="title">MouseArea</span>&#123;</span><br><span class="line">                    <span class="attribute">anchors.fill</span>: imgSwitch</span><br><span class="line">                    <span class="attribute">onClicked</span>: &#123;</span><br><span class="line">                        mouse.accepted = <span class="literal">false</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="title">GridView</span> &#123;</span><br><span class="line">                    <span class="attribute">id:</span><span class="string"> btnSourceList</span></span><br><span class="line">                    <span class="attribute">x</span>:<span class="number">60</span></span><br><span class="line">                    <span class="attribute">width</span>: <span class="built_in">parent</span>.width</span><br><span class="line">                    <span class="attribute">height</span>: <span class="built_in">parent</span>.height</span><br><span class="line">                    <span class="comment">//draggingHorizontally: false</span></span><br><span class="line">                    <span class="comment">//不可拖曳</span></span><br><span class="line">                    <span class="attribute">interactive</span>:<span class="attribute">false</span></span><br><span class="line"><span class="attribute">                    clip</span>: <span class="literal">true</span></span><br><span class="line">                    <span class="attribute">model</span>: [<span class="string">&quot;本地文件&quot;</span>,<span class="string">&quot;USB1&quot;</span>,<span class="string">&quot;USB2&quot;</span>,<span class="string">&quot;AUX音乐&quot;</span>,<span class="string">&quot;蓝牙音乐&quot;</span>]</span><br><span class="line">                    <span class="attribute">cellHeight</span> : <span class="number">230</span></span><br><span class="line">                    <span class="attribute">cellWidth</span> : <span class="number">230</span></span><br><span class="line">                    <span class="attribute">delegate</span>: contactsDelegate</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title">Component</span> &#123;</span><br><span class="line">        <span class="attribute">id:</span><span class="string"> contactsDelegate</span></span><br><span class="line">        <span class="title">Item</span>&#123;</span><br><span class="line">            <span class="attribute">id:</span><span class="string">delegate</span></span><br><span class="line">            <span class="title">Text</span> &#123;</span><br><span class="line">                <span class="attribute">id:</span><span class="string">txtIcon1</span></span><br><span class="line">                <span class="attribute">font.pixelSize</span>: <span class="number">26</span></span><br><span class="line">                <span class="attribute">anchors.horizontalCenter</span>: txtIcon.horizontalCenter</span><br><span class="line">                <span class="attribute">text</span>:<span class="attribute">modelData</span></span><br><span class="line"><span class="attribute">                color</span>: index===currentPressSourceIndex?<span class="string">&quot;blue&quot;</span>:<span class="string">&quot;red&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="title">Text</span> &#123;</span><br><span class="line">                <span class="attribute">id:</span><span class="string">txtIcon</span></span><br><span class="line">                <span class="attribute">anchors.top</span>: delegate.top</span><br><span class="line">                <span class="attribute">anchors.topMargin</span>:<span class="number">30</span></span><br><span class="line">                <span class="attribute">font.pixelSize</span>: <span class="number">26</span></span><br><span class="line">                <span class="attribute">text</span>:<span class="attribute">modelData+&quot;12345&quot;</span></span><br><span class="line"><span class="attribute">                color</span>: index===currentPressSourceIndex?<span class="string">&quot;blue&quot;</span>:<span class="string">&quot;red&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="title">MouseArea</span> &#123;</span><br><span class="line">                <span class="attribute">anchors.fill</span>: txtIcon  <span class="comment">//填充谁谁可已点击</span></span><br><span class="line">                <span class="attribute">onClicked</span>: &#123;</span><br><span class="line">                    <span class="comment">//index</span></span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">&quot;---contactsDelegate----&quot;</span>+index)</span><br><span class="line">                    <span class="comment">//切换</span></span><br><span class="line">                    currentPressSourceIndex=index;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><pre><code class="qml">import QtQuick 2.0
 
+Item &amp;#123;
+    height: 600
+    width:950
+
+    property int currentPressSourceIndex: 0
+
+    Loader &amp;#123;
+      anchors.fill: parent
+      sourceComponent: cmSwitchSource
+    &amp;#125;
+    Component &amp;#123;
+        id:cmSwitchSource
+        Item&amp;#123;
+            Rectangle&amp;#123;
+                id: imgSwitch
+                anchors.centerIn: parent
+                height: 600/2
+                width:950/2
+                color: &quot;steelblue&quot;
+                //防止按键穿透
+                MouseArea&amp;#123;
+                    anchors.fill: imgSwitch
+                    onClicked: &amp;#123;
+                        mouse.accepted = false
+                    &amp;#125;
+                &amp;#125;
+                GridView &amp;#123;
+                    id: btnSourceList
+                    x:60
+                    width: parent.width
+                    height: parent.height
+                    //draggingHorizontally: false
+                    //不可拖曳
+                    interactive:false
+                    clip: true
+                    model: [&quot;本地文件&quot;,&quot;USB1&quot;,&quot;USB2&quot;,&quot;AUX音乐&quot;,&quot;蓝牙音乐&quot;]
+                    cellHeight : 230
+                    cellWidth : 230
+                    delegate: contactsDelegate
+                &amp;#125;
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;
+    Component &amp;#123;
+        id: contactsDelegate
+        Item&amp;#123;
+            id:delegate
+            Text &amp;#123;
+                id:txtIcon1
+                font.pixelSize: 26
+                anchors.horizontalCenter: txtIcon.horizontalCenter
+                text:modelData
+                color: index===currentPressSourceIndex?&quot;blue&quot;:&quot;red&quot;
+            &amp;#125;
+            Text &amp;#123;
+                id:txtIcon
+                anchors.top: delegate.top
+                anchors.topMargin:30
+                font.pixelSize: 26
+                text:modelData+&quot;12345&quot;
+                color: index===currentPressSourceIndex?&quot;blue&quot;:&quot;red&quot;
+            &amp;#125;
+
+            MouseArea &amp;#123;
+                anchors.fill: txtIcon  //填充谁谁可已点击
+                onClicked: &amp;#123;
+                    //index
+                    console.log(&quot;---contactsDelegate----&quot;+index)
+                    //切换
+                    currentPressSourceIndex=index;
+                &amp;#125;
+            &amp;#125;
+
+        &amp;#125;
+    &amp;#125;
+
+&amp;#125;
+</code></pre>
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>
