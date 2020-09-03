@@ -1100,11 +1100,11 @@ date: 2016-09-27 11:31:01
 <script type="text/javascript">
     $.getScript('/js/gitalk.js', function () {
         var gitalk = new Gitalk({
-            clientID: 'd2151c95eccf1fd02c68',
-            clientSecret: '7bbcfb4e81ca8a3722efcf600ff9a5dcc616ea6e',
-            repo: 'https://robinsea.github.io/',
+            clientID: '8b43e31f650f5435483b',
+            clientSecret: '064e9e8cea04c2872840ec2ef131b8455ef4fa86',
+            repo: 'robinsea.github.io',
             owner: 'RobinSea',
-            admin: ['RobinSea'],
+            admin: ['robinsea'],
             id: decodeURI(location.pathname),
             distractionFreeMode: 'true',
             language: 'zh-CN',
