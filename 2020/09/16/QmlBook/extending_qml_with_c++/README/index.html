@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>C++扩展QML（Extending QML with C++） | 我的博客</title>
+  <meta name="keywords" content=" QmlBook ">
+  <meta name="description" content="C++扩展QML（Extending QML with C++） | 我的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="关于本人知识结构 1.语言： Qt，C，C++，golang。  2.IDE： Visual studio、Visual studio Code、Qt Creator。  3.系统： 做过android、windows、linux、QNX、Centos等平台软件或系统开发。  4.托管： GitHub、Gitee、SVN进行代码管理。  5.行业：  流媒体行业后台业务音视频转码、截断等开发、运维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="关于本人知识结构 1.语言： Qt，C，C++，golang。  2.IDE： Visual studio、Visual studio Code、Qt Creator。  3.系统： 做过android、windows、linux、QNX、Centos等平台软件或系统开发。  4.托管： GitHub、Gitee、SVN进行代码管理。  5.行业：  流媒体行业后台业务音视频转码、截断等开发、运维">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-02T11:19:21.000Z">
+<meta property="article:modified_time" content="2020-09-02T11:50:43.070Z">
+<meta property="article:author" content="安联康">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>安联康</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/RobinSea" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:2291184112@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=2291184112&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="kugou" href="https://www.kugou.com/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-kugou"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(73)</small></div></li>
+    
+        
+            
+            <li><div data-rel="读书"><i class="fold iconfont icon-right"></i>读书<small>(19)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="读书<--->QmlBook">QmlBook<small>(19)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="工具"><i class="fold iconfont icon-right"></i>工具<small>(37)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="工具<--->git">git<small>(8)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="工具<--->hexo">hexo<small>(23)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="工具<--->软件记录">软件记录<small>(5)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(9)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="运维<--->docker">docker<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="运维<--->golang">golang<small>(3)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="运维<--->kubernetes">kubernetes<small>(4)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="运维<--->ubantu">ubantu<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="QML"><i class="fold iconfont icon-right"></i>QML<small>(5)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="QML<--->ComboBox">ComboBox<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="QML<--->Gif">Gif<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="QML<--->GridView">GridView<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="QML<--->ListView">ListView<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="QML<--->跑马灯">跑马灯<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="使用"><i class="fold iconfont icon-right"></i>使用<small>(3)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="使用<--->Makedown">Makedown<small>(2)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="使用<--->建站">建站<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="73">
+<input type="hidden" id="yelog_site_word_count" value="47.9k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3-hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AnimatedImage</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Arya</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Button</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ComboBox</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>deepin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>efficiency</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ffmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>fragment_cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Gif</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>GitHub</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>golang</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>GridView</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>IntellijIDEA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>k8s</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>kubectl</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>kubernetes</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ListView</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mac</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Makedown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mathjax</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MdEditor</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MouseArea</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pjax</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PropertyAnimation</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>QmlBook</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>regex</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Row</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SequentialAnimation</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tale</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>terminal</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vim</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vscode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>建站</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文字跑马灯</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>选择框下拉菜单</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="全部文章 工具 hexo "
+           href="/3-hexo-logs"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo开发日志-持续更新">3-hexo开发日志-持续更新</span>
+            <span class="post-date" title="2017-03-13 15:44:57">2017/03/13</span>
+        </a>
+        
+        <a id="top" class="全部文章 工具 hexo "
+           href="/3-hexo-instruction"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo使用说明">3-hexo使用说明</span>
+            <span class="post-date" title="2017-03-23 15:13:47">2017/03/23</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/SUMMARY/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="摘要">摘要</span>
+            <span class="post-date" title="2020-09-16 23:00:18">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="介绍">介绍</span>
+            <span class="post-date" title="2020-09-16 23:00:17">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/meet_qt_5/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="Qt5概述">Qt5概述</span>
+            <span class="post-date" title="2020-09-16 23:00:16">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/get_start/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="开始学习（Get Start）">开始学习（Get Start）</span>
+            <span class="post-date" title="2020-09-16 23:00:15">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/qt_creator_ide/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="Qt Creator集成开发环境（Qt Creator IDE）">Qt Creator集成开发环境（Qt Creator IDE）</span>
+            <span class="post-date" title="2020-09-16 23:00:14">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/quick_starter/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="QML快速入门（Quick Starter）">QML快速入门（Quick Starter）</span>
+            <span class="post-date" title="2020-09-16 23:00:13">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/fluid_elements/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="动态元素（Fluid Elements）">动态元素（Fluid Elements）</span>
+            <span class="post-date" title="2020-09-16 23:00:12">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/model-view-delegate/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="模型-视图-代理（Model-View-Delegate）">模型-视图-代理（Model-View-Delegate）</span>
+            <span class="post-date" title="2020-09-16 23:00:11">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/canvas_element/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="画布元素（Canvas Element）">画布元素（Canvas Element）</span>
+            <span class="post-date" title="2020-09-16 23:00:10">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/particle_simulations/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="粒子模拟（Particle Simulations）">粒子模拟（Particle Simulations）</span>
+            <span class="post-date" title="2020-09-16 23:00:09">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/shader_effect/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="着色器效果（Shader Effect）">着色器效果（Shader Effect）</span>
+            <span class="post-date" title="2020-09-16 23:00:08">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/multimedia/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="多媒体（Multimedia）">多媒体（Multimedia）</span>
+            <span class="post-date" title="2020-09-16 23:00:07">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/networking/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="网络（Networking）">网络（Networking）</span>
+            <span class="post-date" title="2020-09-16 23:00:06">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/storage/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="存储（Storage）">存储（Storage）</span>
+            <span class="post-date" title="2020-09-16 23:00:05">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/dynamic_qml/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="动态QML（Dynamic QML）">动态QML（Dynamic QML）</span>
+            <span class="post-date" title="2020-09-16 23:00:04">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/javascript/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="JavaScript">JavaScript</span>
+            <span class="post-date" title="2020-09-16 23:00:03">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/qt_and_c++/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="Qt and C++">Qt and C++</span>
+            <span class="post-date" title="2020-09-16 23:00:02">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/extending_qml_with_c++/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="C++扩展QML（Extending QML with C++）">C++扩展QML（Extending QML with C++）</span>
+            <span class="post-date" title="2020-09-16 23:00:01">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 读书 QmlBook "
+           href="/2020/09/16/QmlBook/other/README/"
+           data-tag="QmlBook"
+           data-author="" >
+            <span class="post-title" title="其它（Other）">其它（Other）</span>
+            <span class="post-date" title="2020-09-16 23:00:00">2020/09/16</span>
+        </a>
+        
+        <a  class="全部文章 QML Gif "
+           href="/2020/08/29/qml/gif%E8%B0%83%E7%94%A8/"
+           data-tag="Gif,Row,Button,AnimatedImage"
+           data-author="" >
+            <span class="post-title" title="Gif调用">Gif调用</span>
+            <span class="post-date" title="2020-08-29 23:11:51">2020/08/29</span>
+        </a>
+        
+        <a  class="全部文章 QML ListView "
+           href="/2020/08/29/qml/ListView%E4%BD%BF%E7%94%A8MouseArea/"
+           data-tag="MouseArea,ListView"
+           data-author="" >
+            <span class="post-title" title="ListView使用MouseArea">ListView使用MouseArea</span>
+            <span class="post-date" title="2020-08-29 22:32:51">2020/08/29</span>
+        </a>
+        
+        <a  class="全部文章 QML ComboBox "
+           href="/2020/08/29/qml/ComboBox/"
+           data-tag="ComboBox,选择框下拉菜单"
+           data-author="" >
+            <span class="post-title" title="ComboBox">ComboBox</span>
+            <span class="post-date" title="2020-08-29 21:11:51">2020/08/29</span>
+        </a>
+        
+        <a  class="全部文章 QML 跑马灯 "
+           href="/2020/08/29/qml/%E8%B7%91%E9%A9%AC%E7%81%AF%E5%AE%9E%E7%8E%B0/"
+           data-tag="文字跑马灯,SequentialAnimation,PropertyAnimation"
+           data-author="" >
+            <span class="post-title" title="跑马灯实现">跑马灯实现</span>
+            <span class="post-date" title="2020-08-29 20:12:51">2020/08/29</span>
+        </a>
+        
+        <a  class="全部文章 使用 建站 "
+           href="/2020/08/28/guidance/%E5%BB%BA%E7%AB%99/"
+           data-tag="建站"
+           data-author="" >
+            <span class="post-title" title="建站参考">建站参考</span>
+            <span class="post-date" title="2020-08-28 22:32:51">2020/08/28</span>
+        </a>
+        
+        <a  class="全部文章 QML GridView "
+           href="/2020/08/28/qml/GridView%E4%BD%BF%E7%94%A8MouseArea/"
+           data-tag="GridView,MouseArea"
+           data-author="" >
+            <span class="post-title" title="GridView使用MouseArea">GridView使用MouseArea</span>
+            <span class="post-date" title="2020-08-28 21:00:51">2020/08/28</span>
+        </a>
+        
+        <a  class="全部文章 使用 Makedown "
+           href="/2020/08/20/guidance/Makedown/"
+           data-tag="MdEditor,Makedown"
+           data-author="" >
+            <span class="post-title" title="MdEditor">MdEditor</span>
+            <span class="post-date" title="2020-08-20 22:32:51">2020/08/20</span>
+        </a>
+        
+        <a  class="全部文章 使用 Makedown "
+           href="/2020/08/20/guidance/mk/"
+           data-tag="Makedown,Arya"
+           data-author="" >
+            <span class="post-title" title="Arya">Arya</span>
+            <span class="post-date" title="2020-08-20 21:30:51">2020/08/20</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/3-hexo-comment"
+           data-tag="3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo评论设置">3-hexo评论设置</span>
+            <span class="post-date" title="2020-05-23 22:26:23">2020/05/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/3-hexo-support-mermaid"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo支持mermaid图表">3-hexo支持mermaid图表</span>
+            <span class="post-date" title="2019-11-12 09:55:37">2019/11/12</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/3-hexo-add-music"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo 添加音乐插件">3-hexo 添加音乐插件</span>
+            <span class="post-date" title="2019-10-08 10:44:30">2019/10/08</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/3-hexo-jsfiddle"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo支持jsfiddle渲染">3-hexo支持jsfiddle渲染</span>
+            <span class="post-date" title="2019-09-24 09:59:37">2019/09/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/3-hexo-toc"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo文章内toc生成">3-hexo文章内toc生成</span>
+            <span class="post-date" title="2019-09-24 09:48:20">2019/09/24</span>
+        </a>
+        
+        <a  class="全部文章 运维 golang "
+           href="/2019/01/25/back-end/golang%E4%BD%BF%E7%94%A8ffmpeg%E7%9A%84%E9%82%A3%E4%BA%9B%E5%9D%91(%E6%95%B4%E7%90%86%E5%90%8E)/"
+           data-tag="golang,ffmpeg"
+           data-author="" >
+            <span class="post-title" title="golang使用ffmpeg的那些坑(整理后)">golang使用ffmpeg的那些坑(整理后)</span>
+            <span class="post-date" title="2019-01-25 09:35:25">2019/01/25</span>
+        </a>
+        
+        <a  class="全部文章 运维 golang "
+           href="/2018/12/26/back-end/golang%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/"
+           data-tag="golang"
+           data-author="" >
+            <span class="post-title" title="经验总结">经验总结</span>
+            <span class="post-date" title="2018-12-26 15:59:03">2018/12/26</span>
+        </a>
+        
+        <a  class="全部文章 运维 kubernetes "
+           href="/2018/10/16/back-end/kubenetes1.8.15%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E9%83%A8%E7%BD%B2/"
+           data-tag="kubernetes,k8s"
+           data-author="" >
+            <span class="post-title" title="kubenetes1.8.15二进制文件部署">kubenetes1.8.15二进制文件部署</span>
+            <span class="post-date" title="2018-10-16 14:00:03">2018/10/16</span>
+        </a>
+        
+        <a  class="全部文章 运维 ubantu "
+           href="/2018/10/12/back-end/terminal&&vim&&vscode%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"
+           data-tag="vim,terminal,vscode"
+           data-author="" >
+            <span class="post-title" title="经验总结">经验总结</span>
+            <span class="post-date" title="2018-10-12 09:17:10">2018/10/12</span>
+        </a>
+        
+        <a  class="全部文章 运维 kubernetes "
+           href="/2018/10/10/back-end/k8s%E5%85%B3%E9%94%AE%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB%EF%BC%88%E4%B8%89%EF%BC%89----%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2k8s%E9%9B%86%E7%BE%A4/"
+           data-tag="kubernetes,k8s,kubectl"
+           data-author="" >
+            <span class="post-title" title="k8s关键知识点汇总（二）- kubectl操作命令">k8s关键知识点汇总（二）- kubectl操作命令</span>
+            <span class="post-date" title="2018-10-10 16:46:28">2018/10/10</span>
+        </a>
+        
+        <a  class="全部文章 运维 kubernetes "
+           href="/2018/10/10/back-end/k8s%E5%85%B3%E9%94%AE%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB%EF%BC%88%E4%B8%80%EF%BC%89/"
+           data-tag="kubernetes,k8s"
+           data-author="" >
+            <span class="post-title" title="k8s关键知识点汇总（一）">k8s关键知识点汇总（一）</span>
+            <span class="post-date" title="2018-10-10 16:46:28">2018/10/10</span>
+        </a>
+        
+        <a  class="全部文章 运维 docker "
+           href="/2018/10/10/back-end/%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="镜像制作（一）">镜像制作（一）</span>
+            <span class="post-date" title="2018-10-10 16:46:28">2018/10/10</span>
+        </a>
+        
+        <a  class="全部文章 运维 kubernetes "
+           href="/2018/10/09/back-end/k8s%E5%85%B3%E9%94%AE%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB%EF%BC%88%E4%BA%8C%EF%BC%89----k8s%E4%B9%8Bkubectl%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/"
+           data-tag="kubernetes,k8s,kubectl"
+           data-author="" >
+            <span class="post-title" title="k8s关键知识点汇总（二）- kubectl操作命令">k8s关键知识点汇总（二）- kubectl操作命令</span>
+            <span class="post-date" title="2018-10-09 16:54:49">2018/10/09</span>
+        </a>
+        
+        <a  class="全部文章 运维 golang "
+           href="/2018/10/09/back-end/go&&docker&&kubernetes(k8s)&&git%20%20%20%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"
+           data-tag="golang,docker,kubernetes,k8s,git"
+           data-author="" >
+            <span class="post-title" title="go&amp;&amp;docker&amp;&amp;kubernetes(k8s)&amp;&amp;git   学习总结">go&amp;&amp;docker&amp;&amp;kubernetes(k8s)&amp;&amp;git   学习总结</span>
+            <span class="post-date" title="2018-10-09 13:35:18">2018/10/09</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/Mac-BetterTouchTool"
+           data-tag="mac,efficiency"
+           data-author="" >
+            <span class="post-title" title="Mac神器-BTT(BetterTouchTool)不完全教程">Mac神器-BTT(BetterTouchTool)不完全教程</span>
+            <span class="post-date" title="2017-12-13 17:04:25">2017/12/13</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/hexo-fragment_cache"
+           data-tag="hexo,fragment_cache"
+           data-author="" >
+            <span class="post-title" title="Hexo加速渲染速度之fragment_cache">Hexo加速渲染速度之fragment_cache</span>
+            <span class="post-date" title="2017-09-21 19:34:37">2017/09/21</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/MathJax-pjax"
+           data-tag="mathjax,pjax"
+           data-author="" >
+            <span class="post-title" title="MathJax适配Pjax">MathJax适配Pjax</span>
+            <span class="post-date" title="2017-07-05 19:24:10">2017/07/05</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/3-hexo-mathjax"
+           data-tag="mathjax"
+           data-author="" >
+            <span class="post-title" title="3-hexo配置MathJax数学公式渲染">3-hexo配置MathJax数学公式渲染</span>
+            <span class="post-date" title="2017-07-05 15:09:42">2017/07/05</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/gitment"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="完美替代多说-gitment">完美替代多说-gitment</span>
+            <span class="post-date" title="2017-06-26 12:08:13">2017/06/26</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/tale-build-experience"
+           data-tag="tale"
+           data-author="" >
+            <span class="post-title" title="tale博客搭建及体验">tale博客搭建及体验</span>
+            <span class="post-date" title="2017-05-24 11:29:30">2017/05/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/Git%E7%BB%9F%E8%AE%A1%E6%93%8D%E4%BD%9C"
+           data-tag="git"
+           data-author="" >
+            <span class="post-title" title="Git统计操作">Git统计操作</span>
+            <span class="post-date" title="2017-05-16 09:26:11">2017/05/16</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/deepin-linux"
+           data-tag="deepin,运维"
+           data-author="" >
+            <span class="post-title" title="deepin系统使用记录">deepin系统使用记录</span>
+            <span class="post-date" title="2017-03-30 18:58:50">2017/03/30</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/hexo-error-collection"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo报错合集">hexo报错合集</span>
+            <span class="post-date" title="2017-03-27 19:40:42">2017/03/27</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/3-hexo-shortcuts"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo快捷键说明">3-hexo快捷键说明</span>
+            <span class="post-date" title="2017-03-24 16:45:31">2017/03/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 "
+           href="/the-third-comment"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="关于第三方评论系统">关于第三方评论系统</span>
+            <span class="post-date" title="2017-03-23 11:59:50">2017/03/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/windows-hexo"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="windows环境下使用hexo搭建blog平台">windows环境下使用hexo搭建blog平台</span>
+            <span class="post-date" title="2017-03-17 14:02:55">2017/03/17</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/Hexo-RSS-Sitemap"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="为Hexo添加RSS和Sitemap">为Hexo添加RSS和Sitemap</span>
+            <span class="post-date" title="2017-03-14 09:44:29">2017/03/14</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/3-hexo-homepage"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo配置首页">3-hexo配置首页</span>
+            <span class="post-date" title="2017-03-13 09:56:07">2017/03/13</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/Hexo-WordCount"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo加入字数统计WordCount">Hexo加入字数统计WordCount</span>
+            <span class="post-date" title="2017-03-09 16:57:10">2017/03/09</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/3-hexo"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo主题3-hexo">Hexo主题3-hexo</span>
+            <span class="post-date" title="2017-03-07 11:15:50">2017/03/07</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/3-hexo-multiple-author"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo多作者模式">3-hexo多作者模式</span>
+            <span class="post-date" title="2017-02-28 10:55:31">2017/02/28</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/hexo-create-404-page"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo创建404页面">Hexo创建404页面</span>
+            <span class="post-date" title="2017-02-25 15:18:39">2017/02/25</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/hexo-top-sort"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo置顶及排序问题">Hexo置顶及排序问题</span>
+            <span class="post-date" title="2017-02-24 15:50:38">2017/02/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/git-reset"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git之reset揭秘">Git之reset揭秘</span>
+            <span class="post-date" title="2016-12-24 11:19:24">2016/12/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/git-master"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git操作之高手过招">Git操作之高手过招</span>
+            <span class="post-date" title="2016-12-23 10:59:01">2016/12/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/Git-SSH-HTTPS-verify-configuration"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git之SSH与HTTPS免密码配置">Git之SSH与HTTPS免密码配置</span>
+            <span class="post-date" title="2016-12-21 15:31:55">2016/12/21</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/idea-shortcuts"
+           data-tag="IntellijIDEA"
+           data-author="" >
+            <span class="post-title" title="idea常用快捷键">idea常用快捷键</span>
+            <span class="post-date" title="2016-11-05 15:22:48">2016/11/05</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/hexo-git-server-blog"
+           data-tag="hexo,Git"
+           data-author="" >
+            <span class="post-title" title="Hexo+Git服务器搭建blog">Hexo+Git服务器搭建blog</span>
+            <span class="post-date" title="2016-10-23 09:24:03">2016/10/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/hexo-gitHub-pages-create-own-blog"
+           data-tag="hexo,Git,GitHub"
+           data-author="" >
+            <span class="post-title" title="Hexo+GitHub Pages搭建属于自己的blog">Hexo+GitHub Pages搭建属于自己的blog</span>
+            <span class="post-date" title="2016-10-22 21:24:05">2016/10/22</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/set-up-git-server-on-vps"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="搭建Git服务器">搭建Git服务器</span>
+            <span class="post-date" title="2016-10-22 20:08:04">2016/10/22</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/contributing-to-open-source-on-github"
+           data-tag="Git,GitHub"
+           data-author="" >
+            <span class="post-title" title="如何给GitHub上的项目贡献代码">如何给GitHub上的项目贡献代码</span>
+            <span class="post-date" title="2016-10-13 15:44:07">2016/10/13</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/regular-expression"
+           data-tag="regex"
+           data-author="" >
+            <span class="post-title" title="正则表达式详解">正则表达式详解</span>
+            <span class="post-date" title="2016-10-04 09:41:40">2016/10/04</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/Git-command"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git常用命令">Git常用命令</span>
+            <span class="post-date" title="2016-10-02 17:15:39">2016/10/02</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/computer-mutiple-github-account"
+           data-tag="Git,GitHub"
+           data-author="" >
+            <span class="post-title" title="一个客户端设置多个github账号">一个客户端设置多个github账号</span>
+            <span class="post-date" title="2016-09-30 16:42:48">2016/09/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-QmlBook/extending_qml_with_c++/README" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">C++扩展QML（Extending QML with C++）</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="读书">读书</a> > 
+            
+            <a  data-rel="读书&lt;---&gt;QmlBook">QmlBook</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">QmlBook</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-09-16 22:42:23'>2020-09-16 23:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:78</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E6%89%A9%E5%B1%95QML%EF%BC%88Extending-QML-with-C-%EF%BC%89"><span class="toc-text">C++扩展QML（Extending QML with C++）</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C-扩展QML（Extending-QML-with-C-）"><a href="#C-扩展QML（Extending-QML-with-C-）" class="headerlink" title="C++扩展QML（Extending QML with C++）"></a>C++扩展QML（Extending QML with C++）</h1><p>QML执行在受限的空间中，QML作为一种语言提供的功能有时是被限制的。通过C++写的本地函数可以扩展QML运行时的功能。应用程序可以充分利用基础平台的性能和自由度。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2291184112@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '8b43e31f650f5435483b',
+            clientSecret: '064e9e8cea04c2872840ec2ef131b8455ef4fa86',
+            repo: 'robinsea.github.io',
+            owner: 'RobinSea',
+            admin: ['robinsea'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 MyBlog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+        /*高亮代码块行号*/
+        
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+    /*列表样式*/
+    
+    /* 背景图样式 */
+    
+    
+    /*引用块样式*/
+    
+    /*文章列表背景图*/
+    
+    
+</style>
+
+
+
+
+
+
+</html>
